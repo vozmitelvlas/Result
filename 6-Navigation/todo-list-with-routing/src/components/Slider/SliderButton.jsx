@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SliderButton.module.css";
 
-export default function SliderButton ({setOpenerSlider, openerSlider, sort}) {
+export default function SliderButton ({openerSlider, sort}) {
     const toggleMode = () => {
         sort(!openerSlider)
     }

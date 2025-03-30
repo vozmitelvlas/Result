@@ -1,13 +1,11 @@
-import deleteLogo from "../../assets/delete.svg"
-import editLogo from "../../assets/edit.svg"
 import styles from "./Todo.module.css"
-import {useEffect, useState} from "react";
-import {Navigate, NavLink, useNavigate, useParams} from "react-router-dom";
+import { useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import {useRequestGetSpecificTodo} from "../hooks/use-request-get-specific-todo.jsx";
-import {useRequestDeleteTodo, useRequestUpdateTodo} from "../hooks/index.js";
+import {useRequestUpdateTodo} from "../hooks/index.js";
 import DeleteModal from "../ModalWindows/DeleteModal.jsx";
 
-export default function Todo({setTodos, isDone}) {
+export default function Todo({setTodos}) {
     const {id} = useParams()
     const [openerModal, setOpenerModal] = useState(false)
     const [isEdit, setIsEdit] = useState(false)

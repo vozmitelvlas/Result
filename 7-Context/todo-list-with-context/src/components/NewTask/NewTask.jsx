@@ -3,10 +3,10 @@ import {useContext} from "react";
 import {AppContext} from "../../context.jsx";
 
 export default function NewTask({onAddNewTodo}){
-    const {setNewTodo, newTodo} = useContext(AppContext)
+    const {setNewTodo, newTodo, /*onAddNewTodo*/} = useContext(AppContext)
     return(
         <>
-            <form onSubmit={event => onAddNewTodo(event)} className={styles.newTask}>
+            <form onSubmit={onAddNewTodo} className={styles.newTask}>
                 <input
                     type="text"
                     placeholder="Посадить дерево"

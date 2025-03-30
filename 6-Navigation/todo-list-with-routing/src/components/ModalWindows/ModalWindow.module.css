@@ -1,0 +1,59 @@
+.deleteModalOverlay {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    transition: 0.2s ease;
+    opacity: 1;
+    overflow: auto;
+}
+
+.deleteModalOverlayHidden {
+    top: 100%;
+    opacity: 0;
+}
+
+.deleteModal {
+    position: relative;
+    top: 0;
+    width: 30%;
+    height: fit-content;
+    padding: 0 15px;
+    text-align: left;
+
+    border: 2px solid #ffffff;
+    border-radius: 15px;
+    background-color: #ffffff;
+    transition: 0.3s ease-in;
+}
+
+.deleteModalTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    color: #000000;
+}
+
+.deleteModalButtons{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 100px;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+

@@ -21,13 +21,7 @@ export default function Todos({setTodos, todos}) {
         <NavLink
             to={to}
             style={{pointerEvents: isDone ? 'none' : 'auto'}}>
-            {({isActive}) => isActive
-                ? <>
-                    <p className={isDone ? `${styles.doneTodo} ${styles.cutLine}` : styles.cutLine}>{children}</p>
-                </> : <>
-                    <p className={isDone ? `${styles.doneTodo} ${styles.cutLine}` : styles.cutLine}>{children}</p>
-                </>
-            }
+            <p className={isDone ? `${styles.doneTodo} ${styles.cutLine}` : styles.cutLine}>{children}</p>
         </NavLink>
     )
     const sortTodos = (isSort) => {
@@ -42,21 +36,23 @@ export default function Todos({setTodos, todos}) {
     return (
         <>
             <div className={styles.container}>
-                <SearchBlock
-                    onSearch={event => onSearch(event)}
-                ></SearchBlock>
-                <NewTask
-                    setNewTodo={setNewTodo}
-                    newTodo={newTodo}
-                    onAddNewTodo={event => submitFunctionOnAddNewTodo(event)}
-                ></NewTask>
-                <div className={styles.sort}>
-                    <h3>Сортировать</h3>
-                    <SliderButton
-                        sort={sortTodos}
-                        setOpenerSlider={setOpenerSlider}
-                        openerSlider={openerSlider}
-                    ></SliderButton>
+                <div className={styles.header}>
+                    <SearchBlock
+                        onSearch={event => onSearch(event)}
+                    ></SearchBlock>
+                    <NewTask
+                        setNewTodo={setNewTodo}
+                        newTodo={newTodo}
+                        onAddNewTodo={event => submitFunctionOnAddNewTodo(event)}
+                    ></NewTask>
+                    <div className={styles.sort}>
+                        <h3>Сортировать</h3>
+                        <SliderButton
+                            sort={sortTodos}
+                            setOpenerSlider={setOpenerSlider}
+                            openerSlider={openerSlider}
+                        ></SliderButton>
+                    </div>
                 </div>
                 <div className={styles.todoList}>
                     {todos.map(todo => (

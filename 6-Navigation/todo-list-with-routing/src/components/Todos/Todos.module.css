@@ -1,0 +1,52 @@
+.mainTitle{
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    gap: 5px;
+}
+.mainTitle > div {
+    margin: 5px;
+    justify-content: left;
+
+    width: 100%;
+    max-width: 200px;
+    box-sizing: border-box;
+}
+.cutLine{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+
+.todoList {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    flex-direction: column;
+    width: 100%;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 600px;
+}
+.container > div{
+    width: 100%;
+}
+.sort{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.doneTodo {
+    text-decoration: line-through black 5px;
+    pointer-events: none;
+}
+:global .active{
+    color: white;
+    text-decoration: unset;
+}

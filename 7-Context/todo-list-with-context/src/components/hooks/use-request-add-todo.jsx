@@ -10,6 +10,7 @@ export const useRequestAddTodo = (searchValue, setTodos) => {
     }
 
     const submitFunctionOnAddNewTodo = (event) => {
+        console.log("asdasd")
         event.preventDefault()
         fetch(`http://localhost:3000/todos`, {
             method: 'POST',

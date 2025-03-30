@@ -2,8 +2,8 @@ import React, {useContext} from "react";
 import styles from "./SliderButton.module.css";
 import {AppContext} from "../../context.jsx";
 
-export default function SliderButton ({openerSlider}) {
-    const {sort} = useContext(AppContext)
+export default function SliderButton () {
+    const {sort, openerSlider} = useContext(AppContext)
 
     const toggleMode = () => {
         sort(!openerSlider)

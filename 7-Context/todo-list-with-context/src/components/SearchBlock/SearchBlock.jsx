@@ -1,6 +1,9 @@
 import styles from "./SearchBlock.module.css";
+import {useContext} from "react";
+import {AppContext} from "../../context.jsx";
 
-export default function SearchBlock({onSearch}){
+export default function SearchBlock(){
+    const {onSearch} = useContext(AppContext)
     return(
         <>
             <div className={styles.search}>
@@ -9,7 +12,7 @@ export default function SearchBlock({onSearch}){
                     <input
                         type="text"
                         placeholder="Поиск"
-                        onChange={(event) => onSearch(event)}/>
+                        onChange={onSearch}/>
                 </div>
             </div>
         </>

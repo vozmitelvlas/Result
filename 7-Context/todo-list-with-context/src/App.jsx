@@ -11,6 +11,8 @@ import {
 } from "./components/hooks/index.js";
 import SearchBlock from "./components/SearchBlock/SearchBlock.jsx";
 import {AppContext} from "./context.jsx";
+import {TodoList} from "./components/TodoList.jsx";
+import {Header} from "./components/Header.jsx";
 
 function App() {
     const [openerModal, setOpenerModal] = useState(false)
@@ -29,40 +31,32 @@ function App() {
         openCloseDeleteModal()
     }
     const sortTodos = (isSort) => {
-        if(isSort) {
+        if (isSort) {
             setTodos(todos.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase())))
-        }
-        else{
+        } else {
             setTodos(todos.sort((a, b) => a.id - b.id))
         }
         setOpenerSlider(isSort)
     }
+    const appOptions = {
+        onDone: onDoneTodo,
+        onUpdate: onUpdateTodo,
+        onDelete: onDeleteTodo,
+        sort: sortTodos,
+        onSearch: onSearch,
+        setNewTodo: setNewTodo,
+        openerSlider: openerSlider,
+        newTodo: newTodo,
+        // OnAddNewTodo: event => submitFunctionOnAddNewTodo(event) или submitFunctionOnAddNewTodo не работает
+    }
 
     return (
         <>
-            <AppContext value={{onDone: onDoneTodo, onUpdate: onUpdateTodo, onDelete: onDeleteTodo, sort: sortTodos}}>
+            <AppContext value={appOptions}>
                 <div className={styles.todoList}>
-                    <SearchBlock
-                        onSearch={event => onSearch(event)}
-                    ></SearchBlock>
-                    <NewTask
-                        setNewTodo={setNewTodo}
-                        newTodo={newTodo}
-                        onAddNewTodo={event => submitFunctionOnAddNewTodo(event)}
-                    ></NewTask>
-                    <div className={styles.sort}>
-                        <h3>Сортировать</h3>
-                        <SliderButton
-                            openerSlider={openerSlider}
-                        ></SliderButton>
-                    </div>
-                    {todos.map(todo => (
-                        <Todo
-                            key={todo.id}
-                            toDoId={todo.id}
-                            isDone={todo.completed}
-                        >{todo.title}</Todo>
-                    ))}
+                    <Header onAddNewTodo={event => submitFunctionOnAddNewTodo(event)}/>
+                    <TodoList todos={todos}/>
+
                     <DeleteModal
                         onNo={() => setOpenerModal(!openerModal)}
                         onYes={onConfirmDeleting}

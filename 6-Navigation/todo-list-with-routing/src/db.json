@@ -11,7 +11,7 @@
       "id": 2
     },
     {
-      "title": "Исправить замечания по диплому",
+      "title": "Исправить замечания по диплому123",
       "completed": false,
       "id": 3
     },
@@ -19,11 +19,6 @@
       "title": "Провести тренировку",
       "completed": false,
       "id": 4
-    },
-    {
-      "title": "hahah heheheh hphphph",
-      "completed": false,
-      "id": 5
     }
   ]
 }

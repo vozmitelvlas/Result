@@ -1,0 +1,48 @@
+.todo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.saveBut{
+    padding: 0.2em 1em;
+}
+.form{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+}
+
+.text {
+    display: flex;
+    gap: 10px;
+    min-width: 500px;
+    max-width: 1000px;
+}
+
+.options {
+    display: flex;
+    gap: 15px;
+}
+
+.doneTodo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.doneTodo p {
+    text-decoration: line-through black 5px;
+}
+
+.doneTodo a[data-style="edit"] {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.doneTodo a > img[data-style="edit"] {
+    filter: invert(100%);
+    opacity: 0.5;
+}

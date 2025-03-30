@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "title": "Исправить замечания по диплому",
+      "completed": false,
+      "id": 3
+    },
+    {
+      "title": "Провести тренировку",
+      "completed": false,
+      "id": 4
+    },
+    {
+      "title": "Сладко поспать",
+      "completed": false,
+      "id": 5
+    },
+    {
+      "title": "авторизоваться",
+      "completed": false,
+      "id": 7
+    }
+  ]
+}

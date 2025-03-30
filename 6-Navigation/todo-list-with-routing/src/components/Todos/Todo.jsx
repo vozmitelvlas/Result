@@ -7,7 +7,7 @@ import {useRequestGetSpecificTodo} from "../hooks/use-request-get-specific-todo.
 import {useRequestDeleteTodo, useRequestUpdateTodo} from "../hooks/index.js";
 import DeleteModal from "../ModalWindows/DeleteModal.jsx";
 
-export default function Todo({setTodos, isDone}) {
+export default function Todo({setTodos}) {
     const {id} = useParams()
     const [openerModal, setOpenerModal] = useState(false)
     const [isEdit, setIsEdit] = useState(false)

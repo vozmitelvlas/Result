@@ -1,18 +1,23 @@
 {
   "todos": [
     {
-      "title": "Исправить замечания по диплому",
+      "title": "Проснуться",
       "completed": false,
       "id": 1
     },
     {
-      "title": "Провести тренировку",
-      "completed": true,
+      "title": "Доделать курс по фронту",
+      "completed": false,
+      "id": 2
+    },
+    {
+      "title": "Исправить замечания по диплому",
+      "completed": false,
       "id": 3
     },
     {
-      "title": "123",
-      "completed": true,
+      "title": "Провести тренировку",
+      "completed": false,
       "id": 4
     }
   ]

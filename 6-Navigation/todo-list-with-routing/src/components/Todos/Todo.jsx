@@ -53,9 +53,9 @@ export default function Todo({setTodos, isDone}) {
                     </div>
                 )}
                 <div className={styles.options}>
+                    <button onClick={() => navigate("/")}>Назад</button>
                     <button onClick={() => openCloseDeleteModal()}>Удалить</button>
                     <button onClick={() => setIsEdit(true)}>Редактировать</button>
-                    <button onClick={() => navigate("/")}>Назад</button>
                 </div>
             </div>
 

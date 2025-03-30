@@ -1,6 +1,11 @@
 {
   "todos": [
     {
+      "title": "Проснуться",
+      "completed": false,
+      "id": 1
+    },
+    {
       "title": "Доделать курс по фронту",
       "completed": false,
       "id": 2

@@ -10,7 +10,6 @@ export default function DeleteModal({onNo, onYes, open}){
                         Вы действительно хотите удалить?
                     </h3>
                 </div>
-
                 <div className={styles.deleteModalButtons}>
                     <button onClick={onNo}>Нет</button>
                     <button onClick={onYes}>Да</button>

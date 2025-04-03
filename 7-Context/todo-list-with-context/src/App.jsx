@@ -47,7 +47,7 @@ function App() {
         setNewTodo: setNewTodo,
         openerSlider: openerSlider,
         newTodo: newTodo,
-        // OnAddNewTodo: event => submitFunctionOnAddNewTodo(event) или submitFunctionOnAddNewTodo не работает
+        // onAddNewTodo: submitFunctionOnAddNewTodo
     }
 
     return (

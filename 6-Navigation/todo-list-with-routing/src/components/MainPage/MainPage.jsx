@@ -4,7 +4,7 @@ import {NavLink, Outlet} from "react-router-dom";
 import {useState} from "react";
 import {Header, TodoList} from "./components/index.js";
 
-export default function Todos({setTodos, todos}) {
+export default function MainPage({setTodos, todos}) {
     const [openerSlider, setOpenerSlider] = useState(false)
     const {searchValue, onSearch} = useRequestOnSearchTodo(setTodos)
     const {newTodo, setNewTodo, submitFunctionOnAddNewTodo} = useRequestAddTodo(searchValue, setTodos)

@@ -1,0 +1,10 @@
+.search {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.search > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

@@ -1,47 +1,55 @@
-import {useRequestAddTodo, useRequestOnDoneTodo, useRequestOnSearchTodo,} from "../hooks/index.js";
 import styles from "./Todos.module.css";
-import {NavLink, Outlet} from "react-router-dom";
-import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
 import {Header, TodoList} from "./components/index.js";
+import {todosAPI} from "../../api/todosAPI.js";
 
-export default function MainPage({setTodos, todos}) {
-    const [openerSlider, setOpenerSlider] = useState(false)
-    const {searchValue, onSearch} = useRequestOnSearchTodo(setTodos)
-    const {newTodo, setNewTodo, submitFunctionOnAddNewTodo} = useRequestAddTodo(searchValue, setTodos)
-    const {onDoneTodo} = useRequestOnDoneTodo(setTodos)
-    const ExtendedLink = ({to, children, isDone}) => (
-        <NavLink
-            to={to}
-            style={{pointerEvents: isDone ? 'none' : 'auto'}}>
-            <p className={isDone ? `${styles.doneTodo} ${styles.cutLine}` : styles.cutLine}>{children}</p>
-        </NavLink>
-    )
-    const sortTodos = (isSort) => {
-        if (isSort) {
-            setTodos(todos.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase())))
-        } else {
-            setTodos(todos.sort((a, b) => a.id - b.id))
-        }
-        setOpenerSlider(isSort)
+export default function MainPage() {
+    const navigate = useNavigate()
+    const [isSort, setIsSort] = useState(false)
+    const [todos, setTodos] = useState([])
+    const [searchValue, setSearchValue] = useState("")
+    const [newTodo, setNewTodo] = useState("")
+    const [isCompleted, setIsCompleted] = useState(false)
+
+    useEffect(() => {
+        todosAPI.read().then(res => {
+            setTodos(res)
+        })
+        setIsCompleted(false)
+    }, [isCompleted])
+
+    const onAdd = async () => {
+        const res = await todosAPI.create()
+        navigate("/task/" + res.id)
     }
+    const onDone = async (id, done) => {
+        await todosAPI.complete({id, completed: done})
+        setIsCompleted(true)
+    }
+    const onSearch = ({target}) => {
+        setSearchValue(target.value)
+    }
+
+    const filteredTodos = todos.filter(todo => todo.title.toLowerCase().includes(searchValue.toLowerCase()))
+    const sortedTodos = isSort ? [...filteredTodos].sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase())) : filteredTodos
 
     return (
         <>
             <div className={styles.container}>
                 <Header
-                    onAddNewTodo={event => submitFunctionOnAddNewTodo(event)}
-                    setNewTodo={setNewTodo}
-                    newTodo={newTodo}
+                    setTodos={setTodos}
+                    searchValue={searchValue}
+                    setIsSort={setIsSort}
+                    openerSlider={isSort}
                     onSearch={onSearch}
-                    sortTodos={sortTodos}
-                    openerSlider={openerSlider}/>
+                    onAdd={onAdd}
+                    setNewTodo={setNewTodo}
+                    newTodo={newTodo}/>
 
                 <TodoList
-                    todos={todos}
-                    onDoneTodo={onDoneTodo}
-                    ExtendedLink={ExtendedLink}/>
-
-                <Outlet></Outlet>
+                    todos={sortedTodos}
+                    onDone={onDone}/>
             </div>
 
         </>

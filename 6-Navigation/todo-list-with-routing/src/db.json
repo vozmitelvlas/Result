@@ -1,9 +1,9 @@
 {
   "todos": [
     {
+      "id": 1,
       "title": "Проснуться",
-      "completed": false,
-      "id": 1
+      "completed": false
     },
     {
       "title": "Доделать курс по фронту",
@@ -14,16 +14,6 @@
       "title": "Исправить замечания по диплому",
       "completed": false,
       "id": 3
-    },
-    {
-      "title": "Провести тренировку",
-      "completed": false,
-      "id": 4
-    },
-    {
-      "title": "hahah heheheh hphphph",
-      "completed": false,
-      "id": 5
     }
   ]
 }

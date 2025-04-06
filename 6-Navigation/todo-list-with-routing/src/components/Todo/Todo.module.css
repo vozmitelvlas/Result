@@ -1,10 +1,9 @@
 .todo {
     display: flex;
     flex-direction: column;
-    padding-bottom: 10px;
+    padding: 10px 20px 20px 10px;
     font-size: 20px;
     background-color: #5e5e5e;
-    gap: 40px;
     border-radius: 15px;
 }
 
@@ -30,4 +29,23 @@
     display: flex;
     justify-content: center;
     gap: 15px;
+}
+
+.textarea-container {
+    position: relative;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    resize: none;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+    border-color: #ad83b6;
 }

@@ -8,8 +8,8 @@ export default function SearchBlock({onSearch}){
                 <div>
                     <input
                         type="text"
-                        placeholder="Поиск"
-                        onChange={(event) => onSearch(event)}/>
+                        placeholder="Поиск..."
+                        onChange={onSearch}/>
                 </div>
             </div>
         </>

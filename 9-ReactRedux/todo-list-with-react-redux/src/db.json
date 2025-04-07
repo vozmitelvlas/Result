@@ -1,0 +1,39 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Проснуться в 6:00",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "Доделать 2 задание по react-redux",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "title": "Исправить замечания по пулреквестам по диплому",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "Сходить на тренировку",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "title": "Забрать карту с военкомат",
+      "completed": false
+    },
+    {
+      "id": 6,
+      "title": "Разобраться с интеграционными тестами на бэке по диплому. Написать парочку",
+      "completed": false
+    },
+    {
+      "id": 7,
+      "title": "Лечь до 23:00",
+      "completed": false
+    }
+  ]
+}

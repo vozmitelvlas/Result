@@ -1,0 +1,1 @@
+export const NewTask = ({onAdd}) => <button type="submit" onClick={onAdd}>➕</button>

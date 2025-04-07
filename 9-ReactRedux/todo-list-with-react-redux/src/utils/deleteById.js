@@ -1,0 +1,1 @@
+export const deleteById = (arr, id) => arr.filter(elem => elem.id !== id)

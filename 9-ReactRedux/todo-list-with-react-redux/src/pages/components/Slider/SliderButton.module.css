@@ -1,0 +1,44 @@
+/* SliderButton.module.css */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    transition: background-color 0.3s ease;
+}
+
+.slider {
+    width: 60px;
+    height: 30px;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sliderOn {
+    background-color: #fff;
+}
+
+.sliderOff {
+    background-color: #000;
+}
+
+.circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    transition: left 0.3s ease;
+}
+
+.circleOn {
+    background-color: #000;
+    left: 33px;
+}
+
+.circleOff {
+    background-color: #fff;
+    left: 3px;
+}

@@ -1,0 +1,1 @@
+export const selectTodoTitle = ({todo}) => todo.newTitle

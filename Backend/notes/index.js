@@ -1,6 +1,7 @@
 import chalk from "chalk"
 import express from 'express'
 import {addNote, editNoteById, getNotes, removeNoteById} from "./notes.controller.js"
+import mongoose from "mongoose"
 
 const port = 3000
 const app = express()
@@ -17,15 +18,30 @@ app.get('/', async (req, res) => {
         title: 'Express App',
         notes: await getNotes(),
         created: false,
+        error: false,
     })
 })
 app.post('/', async (req, res) => {
-    await addNote(req.body.title)
-    res.render('index', {
-        title: "Express App",
-        notes: await getNotes(),
-        created: true,
-    })
+    try{
+        await addNote(req.body.title)
+        res.render('index', {
+            title: "Express App",
+            notes: await getNotes(),
+            created: true,
+            error: false,
+        })
+
+    } catch (err) {
+        console.error('Creation error', err)
+        res.render('index', {
+            title: "Express App",
+            notes: await getNotes(),
+            created: false,
+            error: true,
+        })
+    }
+
+
 })
 app.delete('/:id', async (req, res) => {
     await removeNoteById(req.params.id)
@@ -33,6 +49,7 @@ app.delete('/:id', async (req, res) => {
         title: "Express App",
         notes: await getNotes(),
         created: false,
+        error: false,
     })
 })
 
@@ -42,9 +59,12 @@ app.put(`/:id`, async (req, res) => {
         title: "Express App",
         notes: await getNotes(),
         created: false,
+        error: false,
     })
 })
 
-app.listen(port, () => {
-    console.log(chalk.green(`Server has been started on ${port}...`))
+mongoose.connect('mongodb+srv://vlas:mongopass@vlas.tirar59.mongodb.net/notes?retryWrites=true&w=majority&appName=Vlas').then(() => {
+    app.listen(port, () => {
+        console.log(chalk.green(`Server has been started on ${port}...`))
+    })
 })

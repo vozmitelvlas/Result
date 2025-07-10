@@ -1,47 +1,18 @@
-import fs from 'fs/promises'
-import path from "path";
-
-const notesPath = path.resolve('db.json')
 import chalk from "chalk"
+import {Note} from "./models/note.js";
 
 export async function addNote(title) {
-    const notes = await getNotes()
-    const note = {
-        title,
-        id: Date.now().toString()
-    }
-
-    notes.push(note)
-
-    await saveNotes(notes)
+    await Note.create({title})
     console.log(chalk.bgGreen('Note was added!'))
 }
-
 export async function getNotes() {
-    const notes = await fs.readFile(notesPath, {encoding: 'utf-8'})
-    return Array.isArray(JSON.parse(notes)) ? JSON.parse(notes) : []
+    return Note.find()
 }
-
-export async function printNotes() {
-    const notes = await getNotes()
-
-    console.log(chalk.italic('Here is the list of notes:'))
-    notes.forEach((note) => {
-        console.log(chalk.green(note.id), chalk.blue(note.title))
-    })
-}
-
-async function saveNotes(notes) {
-    await fs.writeFile(notesPath, JSON.stringify(notes))
-}
-
 export async function removeNoteById(id) {
-    const notes = (await getNotes()).filter(note => note.id !== id)
-    await saveNotes(notes)
+    await Note.deleteOne({_id: id})
     console.log(chalk.bgGreen(`Note was removed`))
 }
 export async function editNoteById(newNote) {
-    const notes = (await getNotes()).filter(note => note.id !== newNote.id)
-    notes.push(newNote)
-    await saveNotes(notes)
+    await Note.updateOne({_id: newNote.id, title: newNote.title})
+    console.log(chalk.bgGreen(`Note was edited`))
 }

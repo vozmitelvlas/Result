@@ -14,7 +14,7 @@ export async function addNote(title) {
     notes.push(note)
 
     await saveNotes(notes)
-    console.log(chalk.bgGreen('Node was added!'))
+    console.log(chalk.bgGreen('Note was added!'))
 }
 
 export async function getNotes() {
@@ -38,5 +38,10 @@ async function saveNotes(notes) {
 export async function removeNoteById(id) {
     const notes = (await getNotes()).filter(note => note.id !== id)
     await saveNotes(notes)
-    console.log(chalk.bgGreen(`Node was removed`))
+    console.log(chalk.bgGreen(`Note was removed`))
+}
+export async function editNoteById(newNote) {
+    const notes = (await getNotes()).filter(note => note.id !== newNote.id)
+    notes.push(newNote)
+    await saveNotes(notes)
 }

@@ -12,7 +12,9 @@ document.addEventListener('click', event => {
 
         if (newTitle) {
             edit({id, newTitle}).then(() => {
-                event.target.closest('li').childNodes[0].textContent = newTitle
+                const li = event.target.closest('li')
+                const firstSpan = li.querySelector('span:first-of-type')
+                firstSpan.textContent = newTitle
             })
         }
     }

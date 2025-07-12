@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename)
 const basePath = path.join(__dirname, 'pages')
 
 server.listen(port, () => {
-    console.log(chalk.green(`Server has been started on ${port}...`))
+    
 })
 const server = http.createServer(async (req, res) => {
     if (req.method === 'GET') {
@@ -22,7 +22,7 @@ const server = http.createServer(async (req, res) => {
             body.push(Buffer.from(data))
         })
         req.on('end', () => {
-            console.log('End', body.toString())
+            
         })
         res.end('Post success')
     }

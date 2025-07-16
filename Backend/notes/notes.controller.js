@@ -2,6 +2,7 @@ import chalk from "chalk"
 import {Note} from "./models/note.js";
 
 export async function addNote(title, owner) {
+    console.log("notes was added")
     await Note.create({title, owner})
     
 }

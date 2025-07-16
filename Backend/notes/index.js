@@ -144,8 +144,8 @@ app.put(`/:id`, async (req, res) => {
     }
 })
 
-mongoose.connect('mongodb+srv://vlas:mongopass@vlas.tirar59.mongodb.net/notes?retryWrites=true&w=majority&appName=Vlas').then(() => {
+mongoose.connect('mongodb://user:mongopass@localhost:27017/testdb?authSource=admin').then(() => {
     app.listen(port, () => {
-        
+        console.log('start')
     })
 })

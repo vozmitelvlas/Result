@@ -1,8 +1,12 @@
-import express from 'express'
+import {config} from "dotenv";
+config()
+import express from "express";
+import {addNote, editNote, getNotes, removeNote} from "./notes.controller.js"
 import mongoose from "mongoose"
 import cookieParser from "cookie-parser"
 import cors from "cors"
 import {router} from "./routes/index.js"
+
 
 const port = 3000
 const app = express()
@@ -18,8 +22,8 @@ app.use(cors())
 app.use('/', router)
 
 
-mongoose.connect('mongodb+srv://vlas:mongopass@vlas.tirar59.mongodb.net/notes?retryWrites=true&w=majority&appName=Vlas').then(() => {
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING).then(() => {
     app.listen(port, () => {
-
+        console.log('start')
     })
 })

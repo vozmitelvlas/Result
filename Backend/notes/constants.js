@@ -1,1 +1,1 @@
-export const JWT_SECRET = 'test'
+export const JWT_SECRET = (await import('dotenv')).config().parsed?.JWT_SECRET;

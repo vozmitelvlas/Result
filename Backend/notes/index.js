@@ -1,10 +1,12 @@
-import chalk from "chalk"
-import express from 'express'
+import {config} from "dotenv";
+config()
+import express from "express";
 import {addNote, editNote, getNotes, removeNote} from "./notes.controller.js"
 import mongoose from "mongoose"
 import {addUser, loginUser} from "./user.controller.js"
 import cookieParser from "cookie-parser"
 import {auth} from "./middlewares/auth.js"
+
 
 const port = 3000
 const app = express()
@@ -112,7 +114,7 @@ app.delete('/:id', async (req, res) => {
             userEmail: req.user.email,
         })
     } catch (err) {
-        
+
         res.render('index', {
             title: "Express App",
             notes: await getNotes(),
@@ -144,8 +146,8 @@ app.put(`/:id`, async (req, res) => {
     }
 })
 
-mongoose.connect('mongodb+srv://vlas:mongopass@vlas.tirar59.mongodb.net/notes?retryWrites=true&w=majority&appName=Vlas').then(() => {
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING).then(() => {
     app.listen(port, () => {
-        
+        console.log('start')
     })
 })

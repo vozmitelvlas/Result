@@ -1,0 +1,44 @@
+{
+  "name": "soundweatherchanger-webpack-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx webpack serve --config webpack.config.dev.js",
+    "build": "npx webpack --config webpack.config.prod.js",
+    "build:dev": "npx webpack --config webpack.config.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vozmitelvlas/SoundWeatherChanger-webpack-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vozmitelvlas/SoundWeatherChanger-webpack-/issues"
+  },
+  "homepage": "https://github.com/vozmitelvlas/SoundWeatherChanger-webpack-#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "copy-webpack-plugin": "^13.0.1",
+    "css-loader": "^7.1.2",
+    "css-minimizer-webpack-plugin": "^7.0.2",
+    "eslint": "^9.39.1",
+    "eslint-webpack-plugin": "^5.0.2",
+    "globals": "^16.5.0",
+    "html-webpack-plugin": "^5.6.4",
+    "mini-css-extract-plugin": "^2.9.4",
+    "postcss": "^8.5.6",
+    "postcss-loader": "^8.2.0",
+    "postcss-preset-env": "^10.4.0",
+    "sass": "^1.93.3",
+    "sass-loader": "^16.0.6",
+    "style-loader": "^4.0.0",
+    "typescript": "^5.9.3",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2",
+    "webpack-merge": "^6.0.1"
+  }
+}

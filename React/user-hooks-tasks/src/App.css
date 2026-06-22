@@ -1,0 +1,10 @@
+.tasks{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 50px;
+}
+
+.task3{
+  background-color: darkgray;
+  
+}

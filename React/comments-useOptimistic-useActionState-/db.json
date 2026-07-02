@@ -1,0 +1,26 @@
+{
+  "comments": [
+    {
+      "id": "1",
+      "postId": "0001",
+      "text": "I will do it!",
+      "author": "vlas_vozmitel",
+      "createdAt": "2026-06-29T07:19:00.000Z"
+    },
+    {
+      "id": "2",
+      "postId": "0002",
+      "text": "I doing it!!!",
+      "author": "vlas_vozmitel",
+      "createdAt": "2026-06-29T07:19:00.000Z"
+    },
+    {
+      "id": "3",
+      "postId": "0003",
+      "text": "I've done it!!! I've done it!!! I've done it!!! I've done it!!! I've done it!!! I've done it!!! I've done it!!! I've done it!!! I've done it!!!",
+      "author": "vlas_vozmitel",
+      "createdAt": "2026-06-29T07:19:00.000Z"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

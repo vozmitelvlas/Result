@@ -1,2 +1,2 @@
 export * from "./styled.ts";
-export * from "./hero.ts";
+export * from "./categories.ts";

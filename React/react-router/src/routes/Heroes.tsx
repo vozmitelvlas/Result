@@ -7,21 +7,15 @@ const HeroesPageContainer = ({className}: StyledProps) => {
 
     return (
         <div className={className}>
+            <h1>Герои</h1>
             <div className="heroes">
-                {heroes.map(({id, image, name, status, species, type, gender}: HeroProps) => (
+                {heroes.map(({id, image, name}: HeroProps) => (
                     <div key={id} className="hero">
                         <img src={image} alt="avatart"/>
-                        <div className="hero-description">
-                            <p><strong>Name: </strong>{name}</p>
-                            <p><strong>Status: </strong>{status}</p>
-                            <p><strong>Species: </strong>{species}</p>
-                            <p><strong>Type: </strong>{type ? type : '-'}</p>
-                            <p><strong>Gender: </strong>{gender}</p>
-                        </div>
+                        <h3>{name}</h3>
                     </div>
                 ))}
             </div>
-            <h2>Герои</h2>
         </div>
     );
 };
@@ -37,12 +31,11 @@ export const HeroesPage = styled(HeroesPageContainer)`
 
   .hero {
     display: flex;
-    flex-direction: column; /* Выстраиваем контент в колонку */
+    flex-direction: column;
     height: 100%;
 
     border: solid #000 2px;
     border-radius: 8px;
-    cursor: pointer;
   }
 
   .hero img {
@@ -52,7 +45,8 @@ export const HeroesPage = styled(HeroesPageContainer)`
     border-radius: 8px;
   }
 
-  .hero-description {
-    margin-left: 5px;
+  .hero h3 {
+    display: flex;
+    justify-content: center
   }
 `;

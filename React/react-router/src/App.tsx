@@ -1,8 +1,13 @@
 import {NavLink, Outlet, ScrollRestoration, useNavigation} from "react-router";
 import type {StyledProps} from "./types";
 import styled from "styled-components";
-import {Suspense} from "react";
 import './App.css';
+import * as React from "react";
+
+const ExtendedLink = ({to, children}: { to: string, children: React.ReactNode }) =>
+    (<NavLink to={to}>
+        {children}
+    </NavLink>);
 
 function AppContainer({className}: StyledProps) {
     const navigation = useNavigation();
@@ -15,24 +20,22 @@ function AppContainer({className}: StyledProps) {
                 <nav>
                     <ul>
                         <li>
-                            <NavLink to="/heroes">Герои</NavLink>
+                            <ExtendedLink to="/heroes">Heroes</ExtendedLink>
                         </li>
                         <li>
-                            <NavLink to="locations">Локации</NavLink>
+                            <ExtendedLink to="locations">Location</ExtendedLink>
                         </li>
                         <li>
-                            <NavLink to="episodes">Эпизоды</NavLink>
+                            <ExtendedLink to="episodes">Episodes</ExtendedLink>
                         </li>
                     </ul>
                 </nav>
             </header>
             <main className="main-content">
-                {isLoading && (
+                {isLoading ? (
                     <h2>🌀 Загрузка данных...</h2>
-                )}
-                <Suspense fallback={<h2>🌀 Загрузка страницы...</h2>}>
-                    <Outlet/>
-                </Suspense>
+                ) : <Outlet/>}
+
             </main>
             <ScrollRestoration/>
         </div>
@@ -46,9 +49,21 @@ export const App = styled(AppContainer)`
     align-items: center;
   }
 
+  a {
+    font-size: 24px;
+  }
+
   .main-content {
     display: flex;
     flex-direction: column;
     margin: 20px;
   }
-`;
+
+  .active {
+    color: green;
+  }
+
+  .pending {
+    color: red;
+  }
+` as React.ComponentType<any>;

@@ -1,3 +1,5 @@
-export interface StyledProps {
-    className?: string;
+import type {HTMLAttributes} from "react";
+
+export interface StyledProps extends HTMLAttributes<HTMLDivElement> {
+    className: string | undefined;
 }

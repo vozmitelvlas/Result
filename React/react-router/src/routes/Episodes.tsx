@@ -1,5 +1,5 @@
 import type {EpisodeProp, StyledProps} from "../types";
-import {useLoaderData} from "react-router";
+import {useLoaderData, Link} from "react-router";
 import styled from "styled-components";
 
 const EpisodesPageContainer = ({className}: StyledProps) => {
@@ -9,9 +9,9 @@ const EpisodesPageContainer = ({className}: StyledProps) => {
         <div className={className}>
             <h1>Эпизоды</h1>
             {episodes.map(({id, name}: EpisodeProp) => (
-                <div className="episode" key={id}>
+                <Link to={`${id}`} className="episode" key={id}>
                     <h3>{name}</h3>
-                </div>
+                </Link>
             ))}
             <h2>Эпизоды</h2>
         </div>

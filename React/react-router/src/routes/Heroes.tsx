@@ -1,6 +1,7 @@
-import {useLoaderData} from 'react-router';
+import {useLoaderData, Link} from 'react-router';
 import styled from "styled-components";
 import type {HeroProps, StyledProps} from "../types";
+import type {ComponentType} from "react";
 
 const HeroesPageContainer = ({className}: StyledProps) => {
     const heroes = useLoaderData();
@@ -10,10 +11,10 @@ const HeroesPageContainer = ({className}: StyledProps) => {
             <h1>Герои</h1>
             <div className="heroes">
                 {heroes.map(({id, image, name}: HeroProps) => (
-                    <div key={id} className="hero">
+                    <Link to={`${id}`} key={id} className="hero">
                         <img src={image} alt="avatart"/>
                         <h3>{name}</h3>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>

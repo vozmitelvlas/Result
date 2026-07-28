@@ -1,6 +1,7 @@
 import {useActionState, useEffect} from "react";
 import type {LoginType} from "../type";
 import {useNavigate} from "react-router";
+import {getUser} from "../api";
 
 const INITIAL_STATE: LoginType = {
     login: '',
@@ -25,16 +26,13 @@ const loginAction = async (state: LoginType, formData: FormData): Promise<LoginT
             return {...state, error: 'Wrong password or login', user: null};
 
         await delay(1000);
-        const res = await fetch('https://jsonplaceholder.typicode.com/users/1');
-
-        if (!res.ok)
-            return {...state, error: 'Error', user: null};
+        const user = await getUser(1);
 
         localStorage.setItem('isAuthenticated', 'true');
         return {
             login: '',
             password: '',
-            user: await res.json(),
+            user,
             error: null,
         };
     } catch (e) {
@@ -54,7 +52,7 @@ export const Login = () => {
 
     return (
         <>
-            <form action={formAction} className="flex flex-col max-w-2xl border-2 p-3 rounded-2xl gap-2     ">
+            <form action={formAction} className="flex flex-col max-w-2xl border-2 p-3 rounded-2xl gap-2">
                 <input type="text" name="login" placeholder="vasya_pupkin" className="border rounded-2xl p-2"/>
                 <input type="password" name="password" placeholder="" className="border rounded-2xl p-2"/>
                 <button

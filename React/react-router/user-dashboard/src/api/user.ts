@@ -1,8 +1,10 @@
 import type {User} from "../type";
+import {delay} from "../utils";
 
 const BASE_URL = 'https://jsonplaceholder.typicode.com';
 
-export const getUser = async (id: number): Promise<User> => {
+export const getUserById = async (id: number): Promise<User> => {
+    // await delay(1000);
     const res = await fetch(`${BASE_URL}/users/${id}`);
     if (!res.ok)
         throw new Error('Error of user download');
@@ -10,6 +12,7 @@ export const getUser = async (id: number): Promise<User> => {
 };
 
 export const updateUserName = async (id: number, name: string): Promise<User> => {
+    await delay(1000);
     const res = await fetch(`${BASE_URL}/users/${id}`, {
         method: 'PATCH',
         headers: {
@@ -22,4 +25,14 @@ export const updateUserName = async (id: number, name: string): Promise<User> =>
     }
 
     return await res.json();
+};
+
+export const getUser = async (payload: { email: string, password: string }): Promise<User> => {
+    await delay(1000);
+    const res = await fetch(`${BASE_URL}/users?email=${payload.email}`);
+    if (!res.ok)
+        throw new Error('Error of user download');
+
+    const users = await res.json();
+    return users[0];
 };

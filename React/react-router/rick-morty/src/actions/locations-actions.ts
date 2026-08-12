@@ -1,14 +1,20 @@
 import type {Location, LocationsParams} from "../types";
 import {delay, sort} from "../utils";
+import type {ApiResponse} from "../types/common.ts";
 
-export const getLocationsAction = async (params: LocationsParams) => {
+export const fetchLocationsPage = async (params: LocationsParams, page: number): Promise<ApiResponse<Location>> => {
     await delay(1000);
-    return sort(await fetch('../locations.json').then(data => data.json()), params.type, params.sort);
+    const res = await fetch(`https://rickandmortyapi.com/api/location?page=${page}`);
+    const locations = await res.json();
+    const sortArr = sort(locations.results, params.type, params.sort);
+    return {
+        ...locations,
+        results: sortArr
+    };
 };
 
-export const getLocationAction = async (id: number) => {
+export const fetchLocation = async (id: number): Promise<Location> => {
     await delay(1000);
-    return await fetch('../locations.json')
-        .then(data => data.json())
-        .then(heroes => heroes.find((location: Location) => location.id === id));
+    const res = await fetch(`https://rickandmortyapi.com/api/location/${id}`);
+    return await res.json();
 };

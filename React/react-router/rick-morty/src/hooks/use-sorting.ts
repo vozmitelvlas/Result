@@ -16,6 +16,11 @@ export const useSorting = <T>() => {
         [searchParams]
     );
 
+    const query = useMemo(() => ({
+        sort: currentOption.value,
+        type: currentType.value,
+    }), [currentType.value, currentOption.value]);
+
     const onSort = useCallback((option: SortOption, type: SortType) => {
         setSearchParams((prevParams) => {
             const nextParams = new URLSearchParams(prevParams);
@@ -40,6 +45,7 @@ export const useSorting = <T>() => {
         initialData: results,
         currentOption,
         currentType,
+        query,
         searchParams,
         onSort
     };

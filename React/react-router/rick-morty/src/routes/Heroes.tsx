@@ -1,17 +1,11 @@
+import {HeaderWithSortingBlock, HeroCard, SortDropDown} from "../components";
 import {useInfiniteData, useInfiniteScroll, useSorting} from "../hooks";
-import {HeaderWithSortingBlock, SortDropDown} from "../components";
-import {HeroCard} from "../components/hero-card.tsx";
 import type {Hero, StyledProps} from "../types";
 import {fetchHeroesPage} from "../actions";
 import styled from "styled-components";
-import {useMemo} from "react";
 
 const HeroesPageContainer = ({className}: StyledProps) => {
-    const {initialData, currentOption, currentType, onSort} = useSorting<Hero>();
-    const query = useMemo(() => ({
-        sort: currentOption.value,
-        type: currentType.value,
-    }), [currentType.value, currentOption.value]);
+    const {initialData, currentOption, currentType, query, onSort} = useSorting<Hero>();
     const {infiniteData: heroes, isLoading, hasMore, loadMore} = useInfiniteData({
         initialData, query, fetchData: fetchHeroesPage
     });

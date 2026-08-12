@@ -1,10 +1,10 @@
 import {
+    fetchEpisode,
+    fetchEpisodesPage,
     fetchHero,
     fetchHeroesPage,
-    getEpisodeAction,
-    getEpisodesAction,
-    getLocationAction,
-    getLocationsAction
+    fetchLocation,
+    fetchLocationsPage
 } from "./actions";
 import {createBrowserRouter, type LoaderFunctionArgs, redirect} from "react-router";
 import {LOCATIONS_DEFAULTS, LOCATIONS_RULES} from "./constants/locations.ts";
@@ -12,9 +12,8 @@ import type {EpisodesParams, HeroesParams, LocationsParams} from "./types";
 import {EPISODES_DEFAULTS, EPISODES_RULES} from "./constants/episodes.ts";
 import {HydrateFallbackComponent, NotFoundPage} from "./components";
 import {HEROES_DEFAULTS, HEROES_RULES} from "./constants/heroes.ts";
-import {validateParams} from "./utils/validate-params.ts";
+import {getUrlParamsFromLoader, validateParams} from "./utils";
 import type {ComponentType} from "react";
-import {getUrlParamsFromLoader} from "./utils";
 import * as module from "./routes";
 import {App} from "./App.tsx";
 
@@ -62,7 +61,7 @@ const router = createBrowserRouter([
                         throw redirect(`/locations?${cleanUrl.toString()}`);
                     }
 
-                    return await getLocationsAction(params);
+                    return await fetchLocationsPage(params, 1);
                 },
                 ErrorBoundary: NotFoundPage,
             },
@@ -82,7 +81,7 @@ const router = createBrowserRouter([
                         const cleanUrl = new URLSearchParams(params as unknown as Record<string, string>);
                         throw redirect(`/episodes?${cleanUrl.toString()}`);
                     }
-                    return await getEpisodesAction(params);
+                    return await fetchEpisodesPage(params, 1);
                 },
                 ErrorBoundary: NotFoundPage,
 
@@ -106,7 +105,7 @@ const router = createBrowserRouter([
                 },
                 loader: async ({params}: LoaderFunctionArgs) => {
                     const id = Number(params.id);
-                    return await getEpisodeAction(id);
+                    return await fetchEpisode(id);
                 },
                 HydrateFallback: HydrateFallbackComponent,
                 ErrorBoundary: NotFoundPage,
@@ -118,7 +117,7 @@ const router = createBrowserRouter([
                 },
                 loader: async ({params}: LoaderFunctionArgs) => {
                     const id = Number(params.id);
-                    return await getLocationAction(id);
+                    return await fetchLocation(id);
                 },
                 HydrateFallback: HydrateFallbackComponent,
                 ErrorBoundary: NotFoundPage,

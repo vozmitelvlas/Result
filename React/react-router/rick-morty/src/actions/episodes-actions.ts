@@ -1,13 +1,19 @@
-import type {EpisodesParams, Hero} from "../types";
+import type {Episode, EpisodesParams} from "../types";
+import type {ApiResponse} from "../types/common.ts";
 import {delay, sort} from "../utils";
 
-export const getEpisodesAction = async (params: EpisodesParams) => {
+export const fetchEpisodesPage = async (params: EpisodesParams, page: number): Promise<ApiResponse<Episode>> => {
     await delay(1000);
-    return sort(await fetch('../episodes.json').then(data => data.json()), params.type, params.sort);
+    const res = await fetch(`https://rickandmortyapi.com/api/episode?page=${page}`);
+    const episodes = await res.json();
+    const sortArr = sort(episodes.results, params.type, params.sort);
+    return {
+        ...episodes,
+        results: sortArr
+    };
 };
-export const getEpisodeAction = async (id: number) => {
+export const fetchEpisode = async (id: number): Promise<Episode> => {
     await delay(1000);
-    return await fetch('../episodes.json')
-        .then(data => data.json())
-        .then(heroes => heroes.find((hero: Hero) => hero.id === id));
+    const res = await fetch(`https://rickandmortyapi.com/api/episode/${id}`);
+    return await res.json();
 };

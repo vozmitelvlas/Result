@@ -1,7 +1,7 @@
 import {delay, sort} from "../utils";
 import type {HeroesParams} from "../types";
 
-export const getHeroesAction = async (params: HeroesParams, page: number) => {
+export const fetchHeroesPage = async (params: HeroesParams, page: number) => {
     await delay(1000);
     const res = await fetch(`https://rickandmortyapi.com/api/character?page=${page}`);
     const heroes = await res.json();
@@ -12,8 +12,8 @@ export const getHeroesAction = async (params: HeroesParams, page: number) => {
     };
 };
 
-export const getHeroAction = async (id: number) => {
+export const fetchHero = async (id: number) => {
     await delay(1000);
-    return await fetch(`https://rickandmortyapi.com/api/character/${id}`)
-        .then(data => data.json());
+    const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+    return await res.json();
 };

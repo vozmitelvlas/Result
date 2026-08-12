@@ -1,6 +1,6 @@
 import type {HeroCardProps} from "../types";
-import {Link} from "react-router";
 import {formatDate} from "../utils";
+import {Link} from "react-router";
 
 export const HeroCard = (props: HeroCardProps) => {
     return <Link to={`${props.id}`} className="hero" ref={props.ref}>

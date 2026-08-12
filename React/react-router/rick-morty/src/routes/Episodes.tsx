@@ -7,6 +7,7 @@ import {useSorting} from "../hooks";
 
 const EpisodesPageContainer = ({className}: StyledProps) => {
     const {data: episodes, currentOption, currentType, onSort} = useSorting<Episode[]>();
+    console.log(episodes);
 
     return (
         <div className={className}>

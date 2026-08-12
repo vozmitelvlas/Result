@@ -1,33 +1,21 @@
+import {useInfiniteData, useInfiniteScroll, useSorting} from "../hooks";
 import {HeaderWithSortingBlock, SortDropDown} from "../components";
-import {useInfiniteHeroes, useSorting} from "../hooks";
 import {HeroCard} from "../components/hero-card.tsx";
-import {useCallback, useRef, useState} from "react";
 import type {Hero, StyledProps} from "../types";
+import {fetchHeroesPage} from "../actions";
 import styled from "styled-components";
+import {useMemo} from "react";
 
 const HeroesPageContainer = ({className}: StyledProps) => {
-    const [page, setPage] = useState(1);
-    const {data, currentOption, currentType, onSort} = useSorting<Hero[]>();
-    const {isLoading, heroes, hasMore} = useInfiniteHeroes(data, {
-        sort: currentOption?.value,
-        type: currentType?.value
-    }, page);
-
-    const observer = useRef<IntersectionObserver | null>(null);
-    const lastNodeRef = useCallback((node: HTMLElement | null) => {
-        if (isLoading) return;
-        if (observer.current)
-            observer.current.disconnect();
-
-        observer.current = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting && hasMore) {
-                setPage(prevState => prevState + 1);
-            }
-        });
-
-        if (node)
-            observer.current.observe(node);
-    }, [isLoading, hasMore]);
+    const {initialData, currentOption, currentType, onSort} = useSorting<Hero>();
+    const query = useMemo(() => ({
+        sort: currentOption.value,
+        type: currentType.value,
+    }), [currentType.value, currentOption.value]);
+    const {infiniteData: heroes, isLoading, hasMore, loadMore} = useInfiniteData({
+        initialData, query, fetchData: fetchHeroesPage
+    });
+    const lastNodeRef = useInfiniteScroll({isLoading, hasMore, loadMore});
 
     return (
         <div className={className}>
@@ -42,12 +30,10 @@ const HeroesPageContainer = ({className}: StyledProps) => {
 
             <div className="heroes">
                 {heroes.map(({id, image, name, created}: Hero, index) => {
-                    if (heroes.length == index + 1) {
-                        return <HeroCard key={id} id={id} image={image} name={name} created={created}
-                                         ref={lastNodeRef}
-                        />;
-                    } else
-                        return <HeroCard key={id} id={id} image={image} name={name} created={created}/>;
+                    const isLast = index === heroes.length - 1;
+                    return <HeroCard key={id} id={id} image={image} name={name} created={created}
+                                     ref={isLast ? lastNodeRef : null}
+                    />;
                 })}
             </div>
         </div>

@@ -1,8 +1,8 @@
 import {
+    fetchHero,
+    fetchHeroesPage,
     getEpisodeAction,
     getEpisodesAction,
-    getHeroAction,
-    getHeroesAction,
     getLocationAction,
     getLocationsAction
 } from "./actions";
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
                         throw redirect(`/heroes?${cleanUrl.toString()}`);
                     }
 
-                    return await getHeroesAction(params, 1);
+                    return await fetchHeroesPage(params, 1);
                 },
                 ErrorBoundary: NotFoundPage,
             },
@@ -94,7 +94,7 @@ const router = createBrowserRouter([
                 },
                 loader: async ({params}: LoaderFunctionArgs) => {
                     const id = Number(params.id);
-                    return await getHeroAction(id);
+                    return await fetchHero(id);
                 },
                 HydrateFallback: HydrateFallbackComponent,
                 ErrorBoundary: NotFoundPage,

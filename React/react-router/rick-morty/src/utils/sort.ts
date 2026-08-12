@@ -16,7 +16,7 @@ const sortByName = <T extends { name: string }>(arr: T[], type: 'asc' | 'desc' =
             sensitivity: 'base',
             numeric: true
         });
-        return type === 'asc' ? smt : -smt;
+        return type === 'asc' ? -smt : smt;
     });
 
 export const sort = <T extends {

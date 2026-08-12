@@ -9,7 +9,7 @@ export interface SortType {
 }
 
 export interface SortDropDownProps {
-    currentOption: SortOption | undefined,
-    currentType: SortType | undefined,
-    onSort: (sortOption: SortOption | undefined, sortType: SortType | undefined) => void
+    currentOption: SortOption,
+    currentType: SortType,
+    onSort: (sortOption: SortOption, sortType: SortType) => void
 }

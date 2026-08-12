@@ -4,7 +4,7 @@ import type {SortOption, SortType} from "../types";
 import {useCallback, useState} from "react";
 
 export const useSorting = <T>() => {
-    const data = useLoaderData() as T;
+    const {results} = useLoaderData() as { results: T };
     const [searchParams, setSearchParams] = useSearchParams();
     const [currentOption, setCurrentOption] = useState<SortOption | undefined>(() => {
         return SORT_OPTIONS.find(option => option.value === searchParams.get('sort'));
@@ -28,8 +28,8 @@ export const useSorting = <T>() => {
     }, []);
 
     return {
-        data,
-        currentOption: currentOption,
+        data: results,
+        currentOption,
         currentType,
         searchParams,
         onSort

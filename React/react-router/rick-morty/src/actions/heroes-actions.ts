@@ -1,13 +1,19 @@
-import type {Hero, HeroesParams} from "../types";
 import {delay, sort} from "../utils";
+import type {HeroesParams} from "../types";
 
-export const getHeroesAction = async (params: HeroesParams) => {
+export const getHeroesAction = async (params: HeroesParams, page: number) => {
     await delay(1000);
-    return sort(await fetch('../characters.json').then(data => data.json()), params.type, params.sort);
+    const res = await fetch(`https://rickandmortyapi.com/api/character?page=${page}`);
+    const heroes = await res.json();
+    const sortArr = sort(heroes.results, params.type, params.sort);
+    return {
+        ...heroes,
+        results: sortArr
+    };
 };
+
 export const getHeroAction = async (id: number) => {
     await delay(1000);
-    return await fetch('../characters.json')
-        .then(data => data.json())
-        .then(heroes => heroes.find((hero: Hero) => hero.id === id));
+    return await fetch(`https://rickandmortyapi.com/api/character/${id}`)
+        .then(data => data.json());
 };

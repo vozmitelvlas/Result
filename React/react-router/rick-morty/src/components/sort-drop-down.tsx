@@ -16,16 +16,6 @@ export const SortDropDown = ({currentOption, currentType, onSort}: SortDropDownP
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    // const handleSelectSort = (option: SortOption) => {
-    //     const type = currentType ? currentType : INITIAL_SORT_STATE.type;
-    //     onSort(option, type);
-    // };
-    //
-    // const handleSelectType = (type: SortType) => {
-    //     const option = currentOption ? currentOption : INITIAL_SORT_STATE.sort;
-    //     onSort(option, type);
-    // };
-
     return (
         <DropDownContainer ref={dropdownRef}>
             <SortButton onClick={() => setIsOpen(!isOpen)}>

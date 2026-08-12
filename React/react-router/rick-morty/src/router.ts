@@ -1,5 +1,9 @@
 import {
-    getEpisodeAction, getEpisodesAction, getHeroAction, getHeroesAction, getLocationAction,
+    getEpisodeAction,
+    getEpisodesAction,
+    getHeroAction,
+    getHeroesAction,
+    getLocationAction,
     getLocationsAction
 } from "./actions";
 import {createBrowserRouter, type LoaderFunctionArgs, redirect} from "react-router";
@@ -37,7 +41,7 @@ const router = createBrowserRouter([
                         throw redirect(`/heroes?${cleanUrl.toString()}`);
                     }
 
-                    return await getHeroesAction(params);
+                    return await getHeroesAction(params, 1);
                 },
                 ErrorBoundary: NotFoundPage,
             },

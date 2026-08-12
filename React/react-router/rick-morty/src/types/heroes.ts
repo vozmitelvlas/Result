@@ -13,3 +13,10 @@ export interface Hero {
 
 export interface HeroesParams extends RequiredSortParams {
 }
+
+export type HeroCardProps = Pick<
+    Hero,
+    'id' | 'name' | 'image' | 'created'
+> & {
+    ref?: React.Ref<HTMLAnchorElement>;
+};

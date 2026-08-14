@@ -1,4 +1,5 @@
 import type {RequiredSortParams} from "./common.ts";
+import type {Ref} from 'react';
 
 export interface Hero {
     id: number,
@@ -13,3 +14,10 @@ export interface Hero {
 
 export interface HeroesParams extends RequiredSortParams {
 }
+
+export type HeroCardProps = Pick<
+    Hero,
+    'id' | 'name' | 'image' | 'created'
+> & {
+    ref?: Ref<HTMLAnchorElement> | null;
+};

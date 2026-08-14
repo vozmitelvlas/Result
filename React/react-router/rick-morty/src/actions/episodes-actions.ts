@@ -1,13 +1,17 @@
-import type {EpisodesParams, Hero} from "../types";
-import {delay, sort} from "../utils";
+import type {Episode, EpisodesParams} from "../types";
+import type {ApiResponse} from "../types/common.ts";
+import {delay, request, sort} from "../utils";
 
-export const getEpisodesAction = async (params: EpisodesParams) => {
+export const fetchEpisodesPage = async (params: EpisodesParams, page: number): Promise<ApiResponse<Episode>> => {
     await delay(1000);
-    return sort(await fetch('../episodes.json').then(data => data.json()), params.type, params.sort);
+    const episodes = await request<ApiResponse<Episode>>(`/episode?page=${page}`);
+    const sortArr = sort(episodes.results, params.type, params.sort);
+    return {
+        ...episodes,
+        results: sortArr
+    };
 };
-export const getEpisodeAction = async (id: number) => {
+export const fetchEpisode = async (id: number): Promise<Episode> => {
     await delay(1000);
-    return await fetch('../episodes.json')
-        .then(data => data.json())
-        .then(heroes => heroes.find((hero: Hero) => hero.id === id));
+    return await request<Episode>(`/episode/${id}`);
 };

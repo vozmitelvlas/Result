@@ -1,4 +1,5 @@
 import type {RequiredSortParams} from "./common.ts";
+import type {Ref} from "react";
 
 export interface Location {
     id: number,
@@ -12,3 +13,10 @@ export interface LocationsParams extends RequiredSortParams {
     page?: number;
     search?: string;
 }
+
+export type LocationCardProps = Pick<
+    Location,
+    'id' | 'name' | 'created'
+> & {
+    ref?: Ref<HTMLAnchorElement> | null;
+};

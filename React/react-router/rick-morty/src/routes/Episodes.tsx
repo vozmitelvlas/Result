@@ -1,12 +1,17 @@
+import {EpisodeCard, HeaderWithSortingBlock, SortDropDown} from "../components";
+import {useInfiniteData, useInfiniteScroll, useSorting} from "../hooks";
 import type {Episode, StyledProps} from "../types";
-import {Link} from "react-router";
+import {fetchEpisodesPage} from "../actions";
 import styled from "styled-components";
-import {HeaderWithSortingBlock, SortDropDown} from "../components";
-import {formatDate} from "../utils";
-import {useSorting} from "../hooks";
 
 const EpisodesPageContainer = ({className}: StyledProps) => {
-    const {data: episodes, currentOption, currentType, onSort} = useSorting<Episode[]>();
+    const {initialData, currentOption, currentType, query, onSort} = useSorting<Episode>();
+    const {infiniteData: episodes, hasMore, loadMore, isLoading} = useInfiniteData({
+        initialData,
+        query,
+        fetchData: fetchEpisodesPage
+    });
+    const lastNodeRef = useInfiniteScroll({isLoading, hasMore, loadMore});
 
     return (
         <div className={className}>
@@ -18,12 +23,10 @@ const EpisodesPageContainer = ({className}: StyledProps) => {
                     onSort={onSort}
                 />
             </HeaderWithSortingBlock>
-            {episodes.map(({id, name, created}: Episode) => (
-                <Link to={`${id}`} className="episode" key={id}>
-                    <h3>{name}</h3>
-                    <p>{formatDate(created)}</p>
-                </Link>
-            ))}
+            {episodes.map(({id, name, created}: Episode, index) => {
+                const isLast = index === episodes.length - 1;
+                return <EpisodeCard name={name} created={created} id={id} key={id} ref={isLast ? lastNodeRef : null}/>;
+            })}
             <h2>Эпизоды</h2>
         </div>
     );

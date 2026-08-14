@@ -1,12 +1,15 @@
+import {HeaderWithSortingBlock, HeroCard, SortDropDown} from "../components";
+import {useInfiniteData, useInfiniteScroll, useSorting} from "../hooks";
 import type {Hero, StyledProps} from "../types";
-import {HeaderWithSortingBlock, SortDropDown} from "../components";
+import {fetchHeroesPage} from "../actions";
 import styled from "styled-components";
-import {formatDate} from "../utils";
-import {useSorting} from "../hooks";
-import {Link} from 'react-router';
 
 const HeroesPageContainer = ({className}: StyledProps) => {
-    const {data: heroes, currentOption, currentType, onSort} = useSorting<Hero[]>();
+    const {initialData, currentOption, currentType, query, onSort} = useSorting<Hero>();
+    const {infiniteData: heroes, isLoading, hasMore, loadMore} = useInfiniteData({
+        initialData, query, fetchData: fetchHeroesPage
+    });
+    const lastNodeRef = useInfiniteScroll({isLoading, hasMore, loadMore});
 
     return (
         <div className={className}>
@@ -20,13 +23,12 @@ const HeroesPageContainer = ({className}: StyledProps) => {
             </HeaderWithSortingBlock>
 
             <div className="heroes">
-                {heroes.map(({id, image, name, created}: Hero) => (
-                    <Link to={`${id}`} key={id} className="hero">
-                        <img src={image} alt="avatart"/>
-                        <h3>{name}</h3>
-                        <p>{formatDate(created)}</p>
-                    </Link>
-                ))}
+                {heroes.map(({id, image, name, created}: Hero, index) => {
+                    const isLast = index === heroes.length - 1;
+                    return <HeroCard key={id} id={id} image={image} name={name} created={created}
+                                     ref={isLast ? lastNodeRef : null}
+                    />;
+                })}
             </div>
         </div>
     );

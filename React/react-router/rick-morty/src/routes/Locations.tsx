@@ -1,12 +1,17 @@
-import {HeaderWithSortingBlock, SortDropDown} from "../components";
+import {HeaderWithSortingBlock, LocationCard, SortDropDown} from "../components";
+import {useInfiniteData, useInfiniteScroll, useSorting} from "../hooks";
 import type {Location, StyledProps} from "../types";
+import {fetchLocationsPage} from "../actions";
 import styled from 'styled-components';
-import {useSorting} from "../hooks";
-import {formatDate} from "../utils";
-import {Link} from "react-router";
 
 const LocationsPageContainer = ({className}: StyledProps) => {
-    const {data: locations, currentOption, currentType, onSort} = useSorting<Location[]>();
+    const {initialData, currentOption, currentType, query, onSort} = useSorting<Location>();
+    const {infiniteData: locations, hasMore, isLoading, loadMore} = useInfiniteData({
+        initialData,
+        query,
+        fetchData: fetchLocationsPage
+    });
+    const lastNodeRef = useInfiniteScroll({hasMore, loadMore, isLoading});
 
     return (
         <div className={className}>
@@ -18,12 +23,12 @@ const LocationsPageContainer = ({className}: StyledProps) => {
                     onSort={onSort}
                 />
             </HeaderWithSortingBlock>
-            {locations.map(({id, name, created}: Location) => (
-                <Link to={`${id}`} className="location" key={id}>
-                    <h3>{name}</h3>
-                    <p>{formatDate(created)}</p>
-                </Link>
-            ))}
+            {locations.map(({id, name, created}: Location, index) => {
+                const isLast = index === locations.length - 1;
+                return <LocationCard key={id} id={id} name={name} created={created}
+                                     ref={isLast ? lastNodeRef : null}
+                />;
+            })}
         </div>
     );
 };

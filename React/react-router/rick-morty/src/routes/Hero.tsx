@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 const HeroPageContainer = ({className}: StyledProps) => {
     const {name, status, species, type, gender, image, created} = useLoaderData();
+
     return (
         <div className={className}>
             <h1>{name}</h1>

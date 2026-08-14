@@ -6,8 +6,7 @@ import * as React from "react";
 
 function AppContainer({className}: StyledProps) {
     const navigation = useNavigation();
-    const isLoading = navigation.state === 'loading';
-    
+
     return (
         <div className={className}>
             <header className="header">
@@ -27,9 +26,11 @@ function AppContainer({className}: StyledProps) {
                 </nav>
             </header>
             <main className="main-content">
-                {isLoading ? (
+                {navigation.state === 'loading' && (
                     <h2>🌀 Загрузка данных...</h2>
-                ) : <Outlet/>}
+                )}
+
+                <Outlet/>
             </main>
             <ScrollRestoration/>
         </div>

@@ -1,13 +1,18 @@
+import {delay, request, sort} from "../utils";
 import type {Hero, HeroesParams} from "../types";
-import {delay, sort} from "../utils";
+import type {ApiResponse} from "../types/common.ts";
 
-export const getHeroesAction = async (params: HeroesParams) => {
+export const fetchHeroesPage = async (params: HeroesParams, page: number): Promise<ApiResponse<Hero>> => {
     await delay(1000);
-    return sort(await fetch('../characters.json').then(data => data.json()), params.type, params.sort);
+    const heroes = await request<ApiResponse<Hero>>(`/character?page=${page}`);
+    const sortArr = sort(heroes.results, params.type, params.sort);
+    return {
+        ...heroes,
+        results: sortArr
+    };
 };
-export const getHeroAction = async (id: number) => {
+
+export const fetchHero = async (id: number): Promise<Hero> => {
     await delay(1000);
-    return await fetch('../characters.json')
-        .then(data => data.json())
-        .then(heroes => heroes.find((hero: Hero) => hero.id === id));
+    return await request<Hero>(`/character/${id}`);
 };

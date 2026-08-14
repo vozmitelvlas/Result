@@ -13,8 +13,6 @@ import {EPISODES_DEFAULTS, EPISODES_RULES} from "./constants/episodes.ts";
 import {ContentErrorPage, HydrateFallbackComponent} from "./components";
 import {HEROES_DEFAULTS, HEROES_RULES} from "./constants/heroes.ts";
 import {getUrlParamsFromLoader, validateParams} from "./utils";
-import type {ComponentType} from "react";
-import * as module from "./routes";
 import {App} from "./App.tsx";
 
 const router = createBrowserRouter([
@@ -28,7 +26,8 @@ const router = createBrowserRouter([
                     {
                         path: 'heroes',
                         lazy: async () => {
-                            return {Component: module.HeroesPage as unknown as ComponentType};
+                            const {HeroesPage} = await import('./routes/Heroes.tsx');
+                            return {Component: HeroesPage};
                         },
                         HydrateFallback: HydrateFallbackComponent,
                         loader: async (args: LoaderFunctionArgs) => {
@@ -42,14 +41,15 @@ const router = createBrowserRouter([
                                 const cleanUrl = new URLSearchParams(params as unknown as Record<string, string>);
                                 throw redirect(`/heroes?${cleanUrl.toString()}`);
                             }
-                            
+
                             return await fetchHeroesPage(params, 1);
                         },
                     },
                     {
                         path: 'locations',
                         lazy: async () => {
-                            return {Component: module.LocationsPage as unknown as ComponentType};
+                            const {LocationsPage} = await import('./routes/Locations.tsx');
+                            return {Component: LocationsPage};
                         },
                         HydrateFallback: HydrateFallbackComponent,
                         loader: async (args: LoaderFunctionArgs) => {
@@ -69,7 +69,8 @@ const router = createBrowserRouter([
                     {
                         path: 'episodes',
                         lazy: async () => {
-                            return {Component: module.EpisodesPage as unknown as ComponentType};
+                            const {EpisodesPage} = await import('./routes/Episodes.tsx');
+                            return {Component: EpisodesPage};
                         },
                         HydrateFallback: HydrateFallbackComponent,
                         loader: async (args: LoaderFunctionArgs) => {
@@ -89,7 +90,8 @@ const router = createBrowserRouter([
                     {
                         path: 'heroes/:id',
                         lazy: async () => {
-                            return {Component: module.HeroPage as unknown as ComponentType};
+                            const {HeroPage} = await import('./routes/Hero.tsx');
+                            return {Component: HeroPage};
                         },
                         loader: async ({params}: LoaderFunctionArgs) => {
                             const id = Number(params.id);
@@ -100,7 +102,8 @@ const router = createBrowserRouter([
                     {
                         path: 'episodes/:id',
                         lazy: async () => {
-                            return {Component: module.EpisodePage as unknown as ComponentType};
+                            const {EpisodePage} = await import('./routes/Episode.tsx');
+                            return {Component: EpisodePage};
                         },
                         loader: async ({params}: LoaderFunctionArgs) => {
                             const id = Number(params.id);
@@ -111,7 +114,8 @@ const router = createBrowserRouter([
                     {
                         path: 'locations/:id',
                         lazy: async () => {
-                            return {Component: module.LocationPage as unknown as ComponentType};
+                            const {LocationPage} = await import('./routes/Location.tsx');
+                            return {Component: LocationPage};
                         },
                         loader: async ({params}: LoaderFunctionArgs) => {
                             const id = Number(params.id);

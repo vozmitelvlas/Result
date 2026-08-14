@@ -7,7 +7,6 @@ export const ContentErrorPage = () => {
         return (
             <div>
                 <h1>{error.status} {error.statusText}</h1>
-
                 <p>{typeof error.data === "string" ? error.data : error.data?.error ?? "Неизвестная ошибка"}</p>
             </div>
         );

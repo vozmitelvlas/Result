@@ -1,11 +1,10 @@
-import {delay, sort} from "../utils";
+import {delay, request, sort} from "../utils";
 import type {Hero, HeroesParams} from "../types";
 import type {ApiResponse} from "../types/common.ts";
 
 export const fetchHeroesPage = async (params: HeroesParams, page: number): Promise<ApiResponse<Hero>> => {
     await delay(1000);
-    const res = await fetch(`https://rickandmortyapi.com/api/character?page=${page}`);
-    const heroes = await res.json();
+    const heroes = await request<ApiResponse<Hero>>(`/character?page=${page}`);
     const sortArr = sort(heroes.results, params.type, params.sort);
     return {
         ...heroes,
@@ -15,6 +14,5 @@ export const fetchHeroesPage = async (params: HeroesParams, page: number): Promi
 
 export const fetchHero = async (id: number): Promise<Hero> => {
     await delay(1000);
-    const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
-    return await res.json();
+    return await request<Hero>(`/character/${id}`);
 };

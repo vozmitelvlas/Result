@@ -6,3 +6,4 @@ export * from "./extended-link.tsx";
 export * from "./location-card.tsx";
 export * from "./hero-card.tsx";
 export * from "./episode-card.tsx";
+export * from "./content-error-page.tsx";

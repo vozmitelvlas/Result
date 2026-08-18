@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 const HeroesPageContainer = ({className}: StyledProps) => {
     const {initialData, currentOption, currentType, query, onSort} = useSorting<Hero>();
+
     const {infiniteData: heroes, isLoading, hasMore, loadMore} = useInfiniteData({
         initialData, query, fetchData: fetchHeroesPage
     });

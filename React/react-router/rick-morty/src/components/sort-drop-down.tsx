@@ -1,5 +1,5 @@
 import {SORT_OPTIONS, SORT_TYPES} from "../constants";
-import type {SortDropDownProps} from "../types";
+import type {SortDropDownProps, SortOption, SortType} from "../types";
 import {useEffect, useRef, useState} from "react";
 import styled from "styled-components";
 
@@ -16,6 +16,12 @@ export const SortDropDown = ({currentOption, currentType, onSort}: SortDropDownP
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    const handleSortClick = (option: SortOption, type: SortType) => {
+        onSort(option, type);
+        setIsOpen(false);
+    };
+
+
     return (
         <DropDownContainer ref={dropdownRef}>
             <SortButton onClick={() => setIsOpen(!isOpen)}>
@@ -25,7 +31,7 @@ export const SortDropDown = ({currentOption, currentType, onSort}: SortDropDownP
                 <DropDownMenu>
                     {SORT_OPTIONS.map(option => (
                         <DropDownItem
-                            onClick={() => onSort(option, currentType)}
+                            onClick={() => handleSortClick(option, currentType)}
                             key={option.value}
                             $isActive={currentOption?.value === option.value}
                         >
@@ -35,7 +41,7 @@ export const SortDropDown = ({currentOption, currentType, onSort}: SortDropDownP
                     <DropDownTypes>
                         {SORT_TYPES.map(type => (
                             <DropDownItem
-                                onClick={() => onSort(currentOption, type)}
+                                onClick={() => handleSortClick(currentOption, type)}
                                 key={type.value}
                                 $isActive={currentType?.value === type.value}
                             >

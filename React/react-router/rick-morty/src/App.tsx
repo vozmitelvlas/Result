@@ -6,7 +6,6 @@ import * as React from "react";
 
 function AppContainer({className}: StyledProps) {
     const navigation = useNavigation();
-
     return (
         <div className={className}>
             <header className="header">

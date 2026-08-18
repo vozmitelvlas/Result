@@ -9,6 +9,10 @@ export const useInfiniteData = <T, P>({initialData, fetchData, query}: UseInfini
     const [hasMore, setHasMore] = useState(true);
 
     useEffect(() => {
+        setData(initialData);
+    }, [initialData]);
+
+    useEffect(() => {
         if (pageNumber > 1) {
             let isSubscribed = true;
             setIsLoading(true);

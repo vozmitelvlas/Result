@@ -1,4 +1,4 @@
-import {Outlet, ScrollRestoration, useNavigation} from "react-router";
+import {Outlet, ScrollRestoration, useLocation, useNavigation} from "react-router";
 import {ExtendedLink} from "./components";
 import type {StyledProps} from "./types";
 import styled from "styled-components";
@@ -6,10 +6,16 @@ import * as React from "react";
 
 function AppContainer({className}: StyledProps) {
     const navigation = useNavigation();
+    const location = useLocation();
+
     return (
         <div className={className}>
             <header className="header">
-                <h1>Привет, мой дорогой друг!</h1>
+                <div style={{'display': 'flex', 'alignItems': 'center'}}>
+                    <h1>Привет, мой дорогой друг!</h1>
+
+                    {location.pathname != '/' && (<div>&larr;<ExtendedLink to="/">Home</ExtendedLink></div>)}
+                </div>
                 <nav>
                     <ul>
                         <li>

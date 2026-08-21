@@ -1,6 +1,7 @@
 import {createBrowserRouter, Outlet} from "react-router";
 import {MantineProvider} from "@mantine/core";
 import App from "../App.tsx";
+import {Login} from "../pages";
 
 export const router = createBrowserRouter([
     {
@@ -13,10 +14,12 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 Component: App,
-                children: [
-
-                ],
+                children: [],
             },
+            {
+                path: '/login',
+                Component: Login,
+            }
         ]
     }
-])
+]);

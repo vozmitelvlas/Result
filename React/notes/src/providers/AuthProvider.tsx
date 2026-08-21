@@ -1,8 +1,8 @@
-import {AuthContext} from "../context";
 import {type PropsWithChildren, useCallback, useState} from "react";
+import {AUTH_STORAGE_KEY} from "../config";
+import {AuthContext} from "../context";
 import type {User} from "../types";
-
-const AUTH_STORAGE_KEY = 'isAuth';
+import {users} from "../constants";
 
 export const AuthProvider = ({children}: PropsWithChildren) => {
     const [user, setUser] = useState<User | null>(() => {
@@ -11,10 +11,10 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
     });
 
     const login = useCallback(async (username: string, password: string) => {
-        if (!username || !password)
-            throw Error('Invalid');
+        const user = users.find(user => user.username === username && user.password === password);
+        if (!user)
+            throw Error('Invalid credentials');
 
-        const user = {username};
         localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(user));
         setUser(user);
     }, []);
@@ -29,7 +29,7 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
             user,
             login,
             logout,
-            isAuth: !!user
+            isAuthenticated: !!user
         }}>
             {children}
         </AuthContext>

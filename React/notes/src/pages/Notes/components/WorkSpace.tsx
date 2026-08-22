@@ -1,6 +1,7 @@
-import {Box, Text} from "@mantine/core";
+import {Center, Paper, Stack, Text, Title} from "@mantine/core";
 import {useParams} from "react-router";
 import {useNote} from "../../../hooks";
+import {formatNoteDate} from "../../../utils";
 
 export const WorkSpace = () => {
     const {noteId} = useParams();
@@ -10,8 +11,21 @@ export const WorkSpace = () => {
         return <Text>Заметка не найдена</Text>;
 
     return (
-        <Box>
-            {note.content}
-        </Box>
+        <Paper p="md">
+            <Stack>
+                <Center>
+                    <Text size="md" c="gray">
+                        {formatNoteDate(note.updatedAt, "noteContent")}
+                    </Text>
+                </Center>
+
+                <Title>
+                    {note.title}
+                </Title>
+                <Text>
+                    {note.content}
+                </Text>
+            </Stack>
+        </Paper>
     );
 };

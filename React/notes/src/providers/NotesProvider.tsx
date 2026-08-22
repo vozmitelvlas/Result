@@ -3,12 +3,14 @@ import type {PropsWithChildren} from "react";
 import {NotesContext} from "../context";
 import type {Note} from "../types";
 import {db} from "../db";
+import {createDefaultNote} from "../utils";
 
 export const NotesProvider = ({children}: PropsWithChildren) => {
     const notes = useLiveQuery(() => db.notes.orderBy("updatedAt").reverse().toArray());
 
-    const addNote = (note: Note) => {
-        return db.notes.add(note);
+    const addNote = (note?: Note) => {
+        const newNote = note ?? createDefaultNote();
+        return db.notes.add(newNote);
     };
 
     const deleteNote = (id: string) => {

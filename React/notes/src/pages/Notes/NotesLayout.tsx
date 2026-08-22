@@ -1,5 +1,6 @@
-import {AppShell, Burger, Group} from "@mantine/core";
+import {Header} from "./components/Header.tsx";
 import {useDisclosure} from "@mantine/hooks";
+import {AppShell} from "@mantine/core";
 import {Outlet} from "react-router";
 import {Navbar} from "./components";
 
@@ -13,10 +14,7 @@ export const NotesLayout = () => {
             navbar={{width: 300, breakpoint: 'xs', collapsed: {mobile: !opened}}}
         >
             <AppShell.Header>
-                <Group h="100%" px="md">
-                    <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm"/>
-                    Notes
-                </Group>
+                <Header opened={opened} toggle={toggle}/>
             </AppShell.Header>
             <AppShell.Navbar>
                 <Navbar toggle={toggle}/>

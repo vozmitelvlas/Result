@@ -1,8 +1,9 @@
 import {createBrowserRouter, Navigate, Outlet} from "react-router";
 import {AuthProvider, NotesProvider} from "../providers";
-import {NotesLayout} from "../pages/NotesLayout.tsx";
+import {EmptyWorkSpace, WorkSpace} from "../pages/Notes/components";
 import {MantineProvider} from "@mantine/core";
 import {ProtectedPage} from "../components";
+import {NotesLayout} from "../pages/Notes";
 import {Login} from "../pages";
 
 export const router = createBrowserRouter([
@@ -32,14 +33,14 @@ export const router = createBrowserRouter([
                         path: '/notes',
                         Component: NotesLayout,
                         children: [
-                            // {
-                            //     index: true,
-                            //     Component: EmptyWorkSpace,
-                            // },
-                            // {
-                            //     path: ':nodeId',
-                            //     Component: WorkSpace
-                            // }
+                            {
+                                index: true,
+                                Component: EmptyWorkSpace,
+                            },
+                            {
+                                path: ':noteId',
+                                Component: WorkSpace
+                            }
                         ]
                     }
                 ]

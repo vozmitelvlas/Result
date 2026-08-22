@@ -1,1 +1,2 @@
-export * from "./authContext.ts";
+export * from "./AuthContext.ts";
+export * from "./NotesContext.ts";

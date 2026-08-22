@@ -15,7 +15,7 @@ export const Login = () => {
     const handleSubmit = async ({username, password}: LoginFormValues) => {
         try {
             await login(username, password);
-            navigate('/', {replace: true});
+            navigate('/notes', {replace: true});
         } catch {
             setFieldError('password', 'Неверное имя пользователя или пароль');
         }

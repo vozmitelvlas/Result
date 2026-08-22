@@ -1,11 +1,10 @@
-import {db} from "../db";
-import {useLiveQuery} from "dexie-react-hooks";
+import {NotesContext} from "../context";
+import {useContext} from "react";
 
 export const useNotes = () => {
-    const notes = useLiveQuery(() => db.notes.orderBy("updatedAt").reverse().toArray());
+    const context = useContext(NotesContext);
+    if (!context)
+        throw new Error("useNotes must be used inside NotesProvider");
 
-    return {
-        notes,
-        isLoading: notes === undefined
-    };
+    return context;
 };

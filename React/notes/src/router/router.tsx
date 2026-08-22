@@ -1,14 +1,19 @@
-import {createBrowserRouter, Outlet} from "react-router";
+import {createBrowserRouter, Navigate, Outlet} from "react-router";
+import {AuthProvider, NotesProvider} from "../providers";
+import {NotesLayout} from "../pages/NotesLayout.tsx";
 import {MantineProvider} from "@mantine/core";
-import App from "../App.tsx";
-import {Login} from "../pages";
 import {ProtectedPage} from "../components";
+import {Login} from "../pages";
 
 export const router = createBrowserRouter([
     {
         element: (
             <MantineProvider>
-                <Outlet/>
+                <AuthProvider>
+                    <NotesProvider>
+                        <Outlet/>
+                    </NotesProvider>
+                </AuthProvider>
             </MantineProvider>
         ),
         children: [
@@ -21,7 +26,21 @@ export const router = createBrowserRouter([
                 children: [
                     {
                         path: '/',
-                        Component: App,
+                        element: <Navigate to="/notes" replace/>
+                    },
+                    {
+                        path: '/notes',
+                        Component: NotesLayout,
+                        children: [
+                            // {
+                            //     index: true,
+                            //     Component: EmptyWorkSpace,
+                            // },
+                            // {
+                            //     path: ':nodeId',
+                            //     Component: WorkSpace
+                            // }
+                        ]
                     }
                 ]
             }

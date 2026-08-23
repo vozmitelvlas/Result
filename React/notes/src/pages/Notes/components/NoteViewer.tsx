@@ -1,14 +1,21 @@
 import {Center, Paper, Stack, Text, Title} from "@mantine/core";
-import {useParams} from "react-router";
-import {useNote} from "../../../hooks";
 import {formatNoteDate} from "../../../utils";
+import {useNote} from "../../../hooks";
+import {useParams} from "react-router";
+import DOMPurify from "dompurify";
+import {marked} from "marked";
+import {useMemo} from "react";
 
 export const WorkSpace = () => {
     const {noteId} = useParams();
     const note = useNote(noteId);
+    const contentHtml = useMemo(() => note ? DOMPurify.sanitize(marked.parse(note.content, {async: false})) : '',
+        [note?.content]
+    );
 
     if (!note)
         return <Text>Заметка не найдена</Text>;
+
 
     return (
         <Paper p="md">
@@ -22,9 +29,12 @@ export const WorkSpace = () => {
                 <Title>
                     {note.title}
                 </Title>
-                <Text>
-                    {note.content}
-                </Text>
+
+                <div
+                    dangerouslySetInnerHTML={{
+                        __html: contentHtml,
+                    }}
+                />
             </Stack>
         </Paper>
     );

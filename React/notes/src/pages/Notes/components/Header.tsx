@@ -1,8 +1,9 @@
 import {ActionIcon, Burger, Group, Title} from "@mantine/core";
+import {useAuth, useNoteActions} from "../../../hooks";
 import {HiOutlinePencilSquare} from "react-icons/hi2";
 import {useNavigate, useParams} from "react-router";
 import {RiDeleteBin6Line} from "react-icons/ri";
-import {useNoteActions} from "../../../hooks";
+import {IoIosLogOut} from "react-icons/io";
 
 interface HeaderProps {
     opened: boolean;
@@ -13,6 +14,7 @@ export const Header = ({opened, toggle}: HeaderProps) => {
     const navigate = useNavigate();
     const {addNote, deleteNote} = useNoteActions();
     const {noteId} = useParams();
+    const {logout} = useAuth();
 
     const handleAddNote = () => addNote().then(noteId => navigate(`/notes/${noteId}`));
 
@@ -23,6 +25,8 @@ export const Header = ({opened, toggle}: HeaderProps) => {
         }
     };
 
+    const handleLogout = async () => await logout();
+
     return (
         <Group h="100%" px="md" bg="var(--mantine-color-gray-1)" wrap="nowrap">
             <Group wrap="nowrap">
@@ -30,15 +34,24 @@ export const Header = ({opened, toggle}: HeaderProps) => {
                 <Title>Notes</Title>
             </Group>
 
-            <Group gap="xs" wrap="nowrap">
-                <ActionIcon variant="default" size="lg" aria-label="Settings" onClick={handleAddNote}>
-                    <HiOutlinePencilSquare size={24}/>
-                </ActionIcon>
+            <Group justify="space-between" w="100%" wrap="nowrap">
+                <Group gap="xs" wrap="nowrap">
+                    <ActionIcon variant="default" size="lg" aria-label="Settings" onClick={handleAddNote}>
+                        <HiOutlinePencilSquare size={24}/>
+                    </ActionIcon>
 
-                <ActionIcon variant="default" size="lg" aria-label="Settings" onClick={handleDeleteNote}>
-                    <RiDeleteBin6Line size={24}/>
-                </ActionIcon>
+                    <ActionIcon variant="default" size="lg" aria-label="Settings" onClick={handleDeleteNote}>
+                        <RiDeleteBin6Line size={24}/>
+                    </ActionIcon>
+                </Group>
+
+                <Group>
+                    <ActionIcon variant="default" size="lg" aria-label="Settings" onClick={handleLogout}>
+                        <IoIosLogOut size={24}/>
+                    </ActionIcon>
+                </Group>
             </Group>
+
         </Group>
     );
 };

@@ -19,7 +19,7 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
         setUser(user);
     }, []);
 
-    const logout = useCallback(() => {
+    const logout = useCallback(async () => {
         localStorage.removeItem(AUTH_STORAGE_KEY);
         setUser(null);
     }, []);

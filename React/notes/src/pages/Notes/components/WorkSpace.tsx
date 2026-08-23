@@ -5,7 +5,7 @@ import {formatNoteDate} from "../../../utils";
 
 export const WorkSpace = () => {
     const {noteId} = useParams();
-    const {note} = useNote(noteId);
+    const note = useNote(noteId);
 
     if (!note)
         return <Text>Заметка не найдена</Text>;

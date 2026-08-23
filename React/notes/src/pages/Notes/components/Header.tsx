@@ -2,7 +2,7 @@ import {ActionIcon, Burger, Group, Title} from "@mantine/core";
 import {HiOutlinePencilSquare} from "react-icons/hi2";
 import {useNavigate, useParams} from "react-router";
 import {RiDeleteBin6Line} from "react-icons/ri";
-import {useNotes} from "../../../hooks";
+import {useNoteActions} from "../../../hooks";
 
 interface HeaderProps {
     opened: boolean;
@@ -11,7 +11,7 @@ interface HeaderProps {
 
 export const Header = ({opened, toggle}: HeaderProps) => {
     const navigate = useNavigate();
-    const {addNote, deleteNote} = useNotes();
+    const {addNote, deleteNote} = useNoteActions();
     const {noteId} = useParams();
 
     const handleAddNote = () => addNote().then(noteId => navigate(`/notes/${noteId}`));
@@ -24,13 +24,17 @@ export const Header = ({opened, toggle}: HeaderProps) => {
     };
 
     return (
-        <Group h="100%" px="md" bg="var(--mantine-color-gray-1)">
-            <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm"/>
-            <Title>Notes</Title>
-            <Group gap="xs">
+        <Group h="100%" px="md" bg="var(--mantine-color-gray-1)" wrap="nowrap">
+            <Group wrap="nowrap">
+                <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm"/>
+                <Title>Notes</Title>
+            </Group>
+
+            <Group gap="xs" wrap="nowrap">
                 <ActionIcon variant="default" size="lg" aria-label="Settings" onClick={handleAddNote}>
                     <HiOutlinePencilSquare size={24}/>
                 </ActionIcon>
+
                 <ActionIcon variant="default" size="lg" aria-label="Settings" onClick={handleDeleteNote}>
                     <RiDeleteBin6Line size={24}/>
                 </ActionIcon>

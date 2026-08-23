@@ -1,18 +1,20 @@
-import {ActionIcon, Burger, Group, Title} from "@mantine/core";
+import {ActionIcon, Burger, Button, Center, Group, Modal, Title} from "@mantine/core";
 import {useAuth, useNoteActions} from "../../../hooks";
 import {HiOutlinePencilSquare} from "react-icons/hi2";
 import {useNavigate, useParams} from "react-router";
 import {RiDeleteBin6Line} from "react-icons/ri";
 import {IoIosLogOut} from "react-icons/io";
+import {useDisclosure} from "@mantine/hooks";
 
 interface HeaderProps {
     opened: boolean;
     toggle: () => void;
 }
 
-export const Header = ({opened, toggle}: HeaderProps) => {
-    const navigate = useNavigate();
+export const Header = ({opened: openedBurger, toggle}: HeaderProps) => {
+    const [opened, {open, close}] = useDisclosure(false);
     const {addNote, deleteNote} = useNoteActions();
+    const navigate = useNavigate();
     const {noteId} = useParams();
     const {logout} = useAuth();
 
@@ -22,6 +24,7 @@ export const Header = ({opened, toggle}: HeaderProps) => {
         if (noteId) {
             await deleteNote(noteId);
             navigate('/notes');
+            close();
         }
     };
 
@@ -29,8 +32,22 @@ export const Header = ({opened, toggle}: HeaderProps) => {
 
     return (
         <Group h="100%" px="md" bg="var(--mantine-color-gray-1)" wrap="nowrap">
+            <Modal
+                opened={opened}
+                onClose={close}
+                title="Удалить заметку?"
+                transitionProps={{transition: 'fade', duration: 200}}
+            >
+                <Center>
+                    <Group>
+                        <Button onClick={handleDeleteNote}>Да</Button>
+                        <Button onClick={close}>Нет</Button>
+                    </Group>
+                </Center>
+            </Modal>
+
             <Group wrap="nowrap">
-                <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm"/>
+                <Burger opened={openedBurger} onClick={toggle} hiddenFrom="xs" size="sm"/>
                 <Title>Notes</Title>
             </Group>
 
@@ -40,7 +57,7 @@ export const Header = ({opened, toggle}: HeaderProps) => {
                         <HiOutlinePencilSquare size={24}/>
                     </ActionIcon>
 
-                    <ActionIcon variant="default" size="lg" aria-label="Settings" onClick={handleDeleteNote}>
+                    <ActionIcon variant="default" size="lg" aria-label="Settings" onClick={open}>
                         <RiDeleteBin6Line size={24}/>
                     </ActionIcon>
                 </Group>
@@ -51,7 +68,6 @@ export const Header = ({opened, toggle}: HeaderProps) => {
                     </ActionIcon>
                 </Group>
             </Group>
-
         </Group>
     );
 };

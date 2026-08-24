@@ -1,1 +1,2 @@
-export * from "./NotesLayout.tsx";
+export * from "./EmptyWorkSpace.tsx";
+export * from "./WorkSpace.tsx";

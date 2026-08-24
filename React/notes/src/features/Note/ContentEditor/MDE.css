@@ -1,0 +1,9 @@
+.EasyMDEContainer .editor-toolbar {
+    border: none;
+    border-bottom: 1px solid var(--mantine-color-gray-3);
+}
+
+.EasyMDEContainer .CodeMirror {
+    border: none;
+    border-radius: 0;
+}

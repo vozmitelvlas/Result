@@ -1,14 +1,15 @@
 import {Group, Stack, Text} from "@mantine/core";
-import {formatNoteDate} from "../../../utils";
-import type {Note} from "../../../types";
+import {formatNoteDate} from "../../../../utils";
+import type {Note} from "../../../../types";
+import removeMd from "remove-markdown";
 import {NavLink} from "react-router";
 
-interface NoteLayoutProps {
+interface NoteItemProps {
     note: Note,
     toggle: () => void
 }
 
-export const NoteLayout = ({note, toggle}: NoteLayoutProps) => {
+export const NoteItem = ({note, toggle}: NoteItemProps) => {
 
     return (
         <NavLink
@@ -33,7 +34,7 @@ export const NoteLayout = ({note, toggle}: NoteLayoutProps) => {
                     </Text>
 
                     <Text size="md" c="dimmed" truncate style={{minWidth: 0}}>
-                        {note.content || 'Без дополнительного текста'}
+                        {removeMd(note.content) || 'Без дополнительного текста'}
                     </Text>
                 </Group>
             </Stack>

@@ -1,10 +1,11 @@
 import {ActionIcon, Burger, Button, Center, Group, Modal, Title} from "@mantine/core";
-import {useAuth, useNoteActions} from "../../../hooks";
+import {useAuth, useNoteActions} from "../hooks";
 import {HiOutlinePencilSquare} from "react-icons/hi2";
 import {useNavigate, useParams} from "react-router";
 import {RiDeleteBin6Line} from "react-icons/ri";
 import {IoIosLogOut} from "react-icons/io";
 import {useDisclosure} from "@mantine/hooks";
+import {MdModeEdit} from "react-icons/md";
 
 interface HeaderProps {
     opened: boolean;
@@ -29,6 +30,8 @@ export const Header = ({opened: openedBurger, toggle}: HeaderProps) => {
     };
 
     const handleLogout = async () => await logout();
+
+    const handleEditNote = () => navigate(`/notes/${noteId}/edit`);
 
     return (
         <Group h="100%" px="md" bg="var(--mantine-color-gray-1)" wrap="nowrap">
@@ -59,6 +62,10 @@ export const Header = ({opened: openedBurger, toggle}: HeaderProps) => {
 
                     <ActionIcon variant="default" size="lg" aria-label="Settings" onClick={open}>
                         <RiDeleteBin6Line size={24}/>
+                    </ActionIcon>
+
+                    <ActionIcon variant="default" size="lg" aria-label="Settings" onClick={handleEditNote}>
+                        <MdModeEdit size={24}/>
                     </ActionIcon>
                 </Group>
 

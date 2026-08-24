@@ -6,3 +6,7 @@ export * from "./NotesContextValue.ts";
 export * from "./HeaderProps.ts";
 export * from "./NoteItemProps.ts";
 export * from "./SearchProps.ts";
+export * from "./DeleteNoteModalProps.ts";
+export * from "./NoteContentProps.ts";
+export * from "./NoteActionsProps.ts";
+export * from "./HeaderBrandProps.ts";

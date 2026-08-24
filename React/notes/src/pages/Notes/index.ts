@@ -1,2 +1,2 @@
 export * from "./EmptyWorkSpace.tsx";
-export * from "./WorkSpace.tsx";
+export * from "./WorkSpace/WorkSpace.tsx";

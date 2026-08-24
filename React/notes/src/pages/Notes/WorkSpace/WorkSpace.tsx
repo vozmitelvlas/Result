@@ -9,6 +9,10 @@ export const WorkSpace = () => {
     const note = useNote(noteId);
     const {pathname} = useLocation();
     const isEditing = pathname === `/notes/${noteId}/edit`;
+    const isMainPage = pathname === '/notes';
+
+    if (isMainPage)
+        return <Paper p="md"><Title>Добро пожаловать в Notes</Title></Paper>;
 
     if (!note)
         return <Paper p="md"><Title order={2}>Заметка не найдена</Title></Paper>;

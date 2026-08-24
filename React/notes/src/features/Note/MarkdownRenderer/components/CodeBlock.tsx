@@ -13,7 +13,6 @@ export const CodeBlock = ({children, className}: CodeBlockProps) => {
     const language = match[1];
     const code = String(children).replace(/\n$/, "");
 
-
     return (
         <Highlight theme={themes.github} code={code} language={language}>
             {({
@@ -23,7 +22,7 @@ export const CodeBlock = ({children, className}: CodeBlockProps) => {
                   getLineProps,
                   getTokenProps,
               }) => (
-                <pre className={className} style={style}>
+                <pre className={className} style={{...style, overflowX: "auto", maxWidth: "100%"}}>
                             {tokens.map((line, i) => (
                                 <div key={i} {...getLineProps({line})}>
                                     <span>{i + 1} </span>

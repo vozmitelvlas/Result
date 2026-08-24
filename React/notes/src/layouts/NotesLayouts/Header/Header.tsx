@@ -1,18 +1,14 @@
 import {ActionIcon, Burger, Button, Center, Group, Modal, Title} from "@mantine/core";
-import {useAuth, useNoteActions} from "../hooks";
+import {useAuth, useNoteActions} from "../../../hooks";
 import {HiOutlinePencilSquare} from "react-icons/hi2";
 import {useNavigate, useParams} from "react-router";
+import type {HeaderProps} from "../../../types";
 import {RiDeleteBin6Line} from "react-icons/ri";
-import {IoIosLogOut} from "react-icons/io";
 import {useDisclosure} from "@mantine/hooks";
+import {IoIosLogOut} from "react-icons/io";
 import {MdModeEdit} from "react-icons/md";
 
-interface HeaderProps {
-    opened: boolean;
-    toggle: () => void;
-}
-
-export const Header = ({opened: openedBurger, toggle}: HeaderProps) => {
+export const Header = ({opened: openedBurger, onMenuClick}: HeaderProps) => {
     const [opened, {open, close}] = useDisclosure(false);
     const {addNote, deleteNote} = useNoteActions();
     const navigate = useNavigate();
@@ -50,7 +46,7 @@ export const Header = ({opened: openedBurger, toggle}: HeaderProps) => {
             </Modal>
 
             <Group wrap="nowrap">
-                <Burger opened={openedBurger} onClick={toggle} hiddenFrom="xs" size="sm"/>
+                <Burger opened={openedBurger} onClick={onMenuClick} hiddenFrom="xs" size="sm"/>
                 <Title>Notes</Title>
             </Group>
 

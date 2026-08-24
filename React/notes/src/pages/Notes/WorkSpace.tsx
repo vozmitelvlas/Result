@@ -1,5 +1,6 @@
 import {Center, Paper, Stack, Text, Title} from "@mantine/core";
 import {ContentEditor, MarkdownRenderer} from "../../features";
+import {TitleEditor} from "../../features/Note/TitleEditor";
 import {useLocation, useParams} from "react-router";
 import {formatNoteDate} from "../../utils";
 import {useNote} from "../../hooks";
@@ -20,7 +21,7 @@ export const WorkSpace = () => {
                     <Text size="md" c="gray">{formatNoteDate(note.updatedAt, "noteContent")}</Text>
                 </Center>
 
-                <Title>{note.title}</Title>
+                {isEditing ? <TitleEditor note={note}/> : <Title>{note.title}</Title>}
 
                 {isEditing ? (
                     <ContentEditor note={note}/>

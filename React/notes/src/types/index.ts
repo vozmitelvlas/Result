@@ -3,3 +3,6 @@ export * from "./User.ts";
 export * from "./AuthContextValue.ts";
 export * from "./LoginFormValues";
 export * from "./NotesContextValue.ts";
+export * from "./HeaderProps.ts";
+export * from "./NoteItemProps.ts";
+export * from "./SearchProps.ts";

@@ -1,0 +1,17 @@
+.titleInput {
+    font-family: var(--mantine-font-family-headings), serif;
+    font-weight: var(--mantine-h1-font-weight);
+    font-size: var(--mantine-h1-font-size);
+    line-height: var(--mantine-h1-line-height);
+    color: var(--mantine-color-text);
+
+    width: 100%;
+    padding: 0;
+    border: 1px solid transparent;
+    background-color: transparent;
+    outline: none;
+}
+
+.titleInput:focus {
+    border-bottom: 1px dashed var(--mantine-color-blue-filled);
+}

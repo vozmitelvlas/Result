@@ -1,8 +1,8 @@
-import {Header} from "../../components";
 import {useDisclosure} from "@mantine/hooks";
 import {AppShell} from "@mantine/core";
 import {Outlet} from "react-router";
 import {Sidebar} from "./Sidebar";
+import {Header} from "./Header";
 
 export const NotesLayout = () => {
     const [opened, {toggle}] = useDisclosure();
@@ -14,11 +14,11 @@ export const NotesLayout = () => {
             navbar={{width: 300, breakpoint: 'xs', collapsed: {mobile: !opened}}}
         >
             <AppShell.Header>
-                <Header opened={opened} toggle={toggle}/>
+                <Header opened={opened} onMenuClick={toggle}/>
             </AppShell.Header>
 
             <AppShell.Navbar>
-                <Sidebar toggle={toggle}/>
+                <Sidebar onNoteSelect={toggle}/>
             </AppShell.Navbar>
 
             <AppShell.Main>

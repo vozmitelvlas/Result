@@ -8,7 +8,7 @@ interface LoginFormValues {
     password: string
 }
 
-export const Login = () => {
+export const LoginPage = () => {
     const navigate = useNavigate();
     const {login} = useAuth();
     const {onSubmit, getInputProps, setFieldError} = useForm<LoginFormValues>({

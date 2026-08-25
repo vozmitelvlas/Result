@@ -1,2 +1,2 @@
-export * from "./Login/Login.tsx";
-export * from './WorkSpace/WorkSpace.tsx';
+export * from "@/pages/LoginPage/LoginPage.tsx";
+export * from './WorkSpacePage/WorkSpacePage.tsx';

@@ -1,5 +1,5 @@
+import {createBrowserRouter, Navigate, Outlet, redirect} from "react-router";
 import {HydrateFallbackComponent, ProtectedPage} from "@/components";
-import {createBrowserRouter, Navigate, Outlet} from "react-router";
 import {AuthProvider, NotesProvider} from "@/providers";
 import {MantineProvider} from "@mantine/core";
 
@@ -19,8 +19,8 @@ export const router = createBrowserRouter([
             {
                 path: '/login',
                 lazy: async () => {
-                    const {Login} = await import('../pages/Login/Login.tsx');
-                    return {Component: Login};
+                    const {LoginPage} = await import('@/pages/LoginPage/LoginPage.tsx');
+                    return {Component: LoginPage};
                 },
             },
             {
@@ -40,8 +40,8 @@ export const router = createBrowserRouter([
                             {
                                 index: true,
                                 lazy: async () => {
-                                    const {WorkSpace} = await import('../pages/WorkSpace/WorkSpace.tsx');
-                                    return {Component: WorkSpace};
+                                    const {WorkSpacePage} = await import('../pages/WorkSpacePage/WorkSpacePage.tsx');
+                                    return {Component: WorkSpacePage};
                                 },
                             },
                             {
@@ -50,15 +50,15 @@ export const router = createBrowserRouter([
                                     {
                                         index: true,
                                         lazy: async () => {
-                                            const {WorkSpace} = await import('../pages/WorkSpace/WorkSpace.tsx');
-                                            return {Component: WorkSpace};
+                                            const {WorkSpacePage} = await import('../pages/WorkSpacePage/WorkSpacePage.tsx');
+                                            return {Component: WorkSpacePage};
                                         },
                                     },
                                     {
                                         path: 'edit',
                                         lazy: async () => {
-                                            const {WorkSpace} = await import('../pages/WorkSpace/WorkSpace.tsx');
-                                            return {Component: WorkSpace};
+                                            const {WorkSpacePage} = await import('../pages/WorkSpacePage/WorkSpacePage.tsx');
+                                            return {Component: WorkSpacePage};
                                         },
                                     },
                                 ],
@@ -69,5 +69,9 @@ export const router = createBrowserRouter([
                 ]
             }
         ]
+    },
+    {
+        path: '*',
+        loader: () => redirect('/notes'),
     }
 ]);

@@ -4,7 +4,7 @@ import {useLocation, useParams} from "react-router";
 import {formatNoteDate} from "@/utils";
 import {useNote} from "@/hooks";
 
-export const WorkSpace = () => {
+export const WorkSpacePage = () => {
     const {noteId} = useParams();
     const note = useNote(noteId);
     const {pathname} = useLocation();

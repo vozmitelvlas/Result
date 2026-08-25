@@ -1,0 +1,9 @@
+import {useContext} from "react";
+import {ConfirmModalContext} from "../context";
+
+export const useConfirmModal = () => {
+    const context = useContext(ConfirmModalContext);
+    if (!context)
+        throw new Error("useConfirmModal must be used inside AuthProvider");
+    return context;
+};

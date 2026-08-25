@@ -11,3 +11,4 @@ export * from "./NoteContentProps.ts";
 export * from "./NoteActionsProps.ts";
 export * from "./HeaderBrandProps.ts";
 export * from "./HeaderNoteActionsProps.ts";
+export * from "./ConfirmModalOptions.ts";

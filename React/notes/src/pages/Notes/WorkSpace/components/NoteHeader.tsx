@@ -1,27 +1,23 @@
-import {ActionIcon, Button, Group, Title} from "@mantine/core";
 import {TitleEditor} from "../../../../features/Note/TitleEditor";
+import {useConfirmModal, useNoteActions} from "../../../../hooks";
+import {ActionIcon, Button, Group, Title} from "@mantine/core";
 import type {NoteActionsProps} from "../../../../types";
-import {DeleteNoteModal} from "./DeleteNoteModal.tsx";
-import {useNoteActions} from "../../../../hooks";
 import {RiDeleteBin6Line} from "react-icons/ri";
-import {useDisclosure} from "@mantine/hooks";
 import {MdModeEdit} from "react-icons/md";
 import {useNavigate} from "react-router";
 
 export const NoteHeader = ({isEditing, note}: NoteActionsProps) => {
     const navigate = useNavigate();
-    const [opened, {open, close}] = useDisclosure(false);
+    const {confirm} = useConfirmModal();
+    const {deleteNote} = useNoteActions();
+
     const handleCompleteEditing = () => navigate(`/notes/${note.id}`);
+
     const handleToEditNote = () => navigate(`/notes/${note.id}/edit`);
 
-    const {deleteNote} = useNoteActions();
-    const handleDeleteNote = async () => {
-        if (note.id) {
-            await deleteNote(note.id);
-            navigate('/notes');
-            close();
-        }
-    };
+    const handleDeleteNote = () => deleteNote(note.id).then(() => navigate('/notes'));
+
+    const handleDeleteClick = () => confirm({title: 'Удалить заметку?', onConfirm: handleDeleteNote});
 
     return isEditing ? (
         <Group justify="space-between">
@@ -35,11 +31,10 @@ export const NoteHeader = ({isEditing, note}: NoteActionsProps) => {
                 <ActionIcon variant="outline" size="lg" aria-label="Settings" onClick={handleToEditNote}>
                     <MdModeEdit size={24}/>
                 </ActionIcon>
-                <ActionIcon variant="outline" size="lg" aria-label="Settings" onClick={open}>
+                <ActionIcon variant="outline" size="lg" aria-label="Settings" onClick={handleDeleteClick}>
                     <RiDeleteBin6Line size={24}/>
                 </ActionIcon>
             </Group>
-            <DeleteNoteModal opened={opened} close={close} onConfirm={handleDeleteNote}/>
         </Group>
     );
 };

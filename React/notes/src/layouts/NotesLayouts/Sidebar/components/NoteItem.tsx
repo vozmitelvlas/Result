@@ -12,7 +12,7 @@ export const NoteItem = ({note, onSelect}: NoteItemProps) =>
             display: "block",
             textDecoration: "none",
             color: "inherit",
-            backgroundColor: isActive ? "var(--mantine-color-gray-2)" : undefined,
+            backgroundColor: isActive ? "var(--mantine-color-blue-0)" : undefined,
             borderBottom: "1px solid var(--mantine-color-gray-3)",
         })}
     >

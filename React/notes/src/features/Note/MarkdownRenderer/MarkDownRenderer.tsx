@@ -2,6 +2,7 @@ import {Blockquote, Box, Title} from "@mantine/core";
 import ReactMarkdown from "react-markdown";
 import {CodeBlock} from "./components";
 import remarkGfm from "remark-gfm";
+import {GrBlockQuote} from "react-icons/gr";
 
 export const MarkdownRenderer = ({content}: { content: string }) => {
     return (
@@ -11,7 +12,11 @@ export const MarkdownRenderer = ({content}: { content: string }) => {
                 components={{
                     h1: ({children}) => <Title order={1}>{children}</Title>,
                     h2: ({children}) => <Title order={2}>{children}</Title>,
-                    blockquote: ({children}) => <Blockquote py="xs">{children}</Blockquote>,
+                    blockquote: ({children}) => <Blockquote
+                        icon={<GrBlockQuote/>}
+                        iconSize={20}
+                        p="1px 10px">{children}
+                    </Blockquote>,
                     code: CodeBlock
                 }}
             >

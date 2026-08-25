@@ -1,9 +1,29 @@
-.EasyMDEContainer .editor-toolbar {
+.EasyMDEContainer :global(.editor-toolbar) {
     border: none;
     border-bottom: 1px solid var(--mantine-color-gray-3);
 }
 
-.EasyMDEContainer .CodeMirror {
+.EasyMDEContainer :global(.CodeMirror) {
+    padding: 0;
     border: none;
     border-radius: 0;
+}
+
+.EasyMDEContainer :global(.CodeMirror-vscrollbar) {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.EasyMDEContainer :global(.CodeMirror-vscrollbar)::-webkit-scrollbar {
+    display: none;
+}
+
+
+.EasyMDEContainer :global(.editor-preview) {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.EasyMDEContainer :global(.editor-preview)::-webkit-scrollbar {
+    display: none;
 }

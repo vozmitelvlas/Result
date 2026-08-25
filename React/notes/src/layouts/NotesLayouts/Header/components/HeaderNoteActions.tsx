@@ -13,10 +13,10 @@ export const HeaderNoteActions = () => {
 
     return (
         <Group justify="space-between" w="100%" wrap="nowrap">
-            <ActionIcon variant="default" size="lg" aria-label="Создать заметку" onClick={handleAddNote}>
+            <ActionIcon variant="outline" size="lg" aria-label="Создать заметку" onClick={handleAddNote}>
                 <HiOutlinePencilSquare size={24}/>
             </ActionIcon>
-            <ActionIcon variant="default" size="lg" aria-label="Выйти" onClick={logout}>
+            <ActionIcon variant="outline" size="lg" aria-label="Выйти" onClick={logout}>
                 <IoIosLogOut size={24}/>
             </ActionIcon>
         </Group>

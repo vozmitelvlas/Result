@@ -13,5 +13,5 @@
 }
 
 .titleInput:focus {
-    border-bottom: 1px dashed var(--mantine-color-blue-filled);
+    border-bottom: 1px dashed var(--mantine-color-blue-3);
 }

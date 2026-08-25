@@ -1,5 +1,5 @@
-import {Burger, Group, Title} from "@mantine/core";
 import type {HeaderBrandProps} from "../../../../types";
+import {Burger, Group, Title} from "@mantine/core";
 
 export const HeaderBrand = ({openedBurger, onMenuClick}: HeaderBrandProps) =>
     <Group wrap="nowrap">

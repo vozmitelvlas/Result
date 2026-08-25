@@ -10,5 +10,5 @@ export const Search = ({value, setValue}: SearchProps) =>
         value={value}
         onChange={({target}) => setValue(target.value)}
         placeholder="Поиск заметок..."
-        leftSection={<IoIosSearch size={24}/>}
+        leftSection={<IoIosSearch size={24} color="var(--mantine-color-blue-6)"/>}
     />;

@@ -7,4 +7,5 @@ export const editorOptions: Options = {
     placeholder: "Введите текст заметки...",
     toolbar: ["bold", "italic", "heading", "|", "quote", "unordered-list",
         "ordered-list", "|", "link", "code", "preview",],
+    maxHeight: "calc(100vh - 250px)",
 };

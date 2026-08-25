@@ -26,16 +26,16 @@ export const NoteHeader = ({isEditing, note}: NoteActionsProps) => {
     return isEditing ? (
         <Group justify="space-between">
             <TitleEditor note={note}/>
-            <Button variant="default" onClick={handleCompleteEditing}>Готово</Button>
+            <Button variant="outline" onClick={handleCompleteEditing}>Готово</Button>
         </Group>
     ) : (
         <Group justify="space-between">
             <Title>{note.title}</Title>
             <Group>
-                <ActionIcon variant="default" size="lg" aria-label="Settings" onClick={handleToEditNote}>
+                <ActionIcon variant="outline" size="lg" aria-label="Settings" onClick={handleToEditNote}>
                     <MdModeEdit size={24}/>
                 </ActionIcon>
-                <ActionIcon variant="default" size="lg" aria-label="Settings" onClick={open}>
+                <ActionIcon variant="outline" size="lg" aria-label="Settings" onClick={open}>
                     <RiDeleteBin6Line size={24}/>
                 </ActionIcon>
             </Group>

@@ -1,2 +1,3 @@
-export * from "./MarkdownRenderer";
-export * from "./ContentEditor";
+export * from "./MarkdownRenderer/MarkDownRenderer.tsx";
+export * from "./ContentEditor/ContentEditor.tsx";
+export * from "./TitleEditor/TitleEditor.tsx";

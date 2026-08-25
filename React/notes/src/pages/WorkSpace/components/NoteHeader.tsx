@@ -1,12 +1,17 @@
-import {TitleEditor} from "../../../../features/Note/TitleEditor";
-import {useConfirmModal, useNoteActions} from "../../../../hooks";
+import {useConfirmModal, useNoteActions} from "../../../hooks";
 import {ActionIcon, Button, Group, Title} from "@mantine/core";
-import type {NoteActionsProps} from "../../../../types";
+import {TitleEditor} from "../../../features";
 import {RiDeleteBin6Line} from "react-icons/ri";
+import type {Note} from "../../../types";
 import {MdModeEdit} from "react-icons/md";
 import {useNavigate} from "react-router";
 
-export const NoteHeader = ({isEditing, note}: NoteActionsProps) => {
+interface NoteHeaderProps {
+    isEditing: boolean,
+    note: Note,
+}
+
+export const NoteHeader = ({isEditing, note}: NoteHeaderProps) => {
     const navigate = useNavigate();
     const {confirm} = useConfirmModal();
     const {deleteNote} = useNoteActions();

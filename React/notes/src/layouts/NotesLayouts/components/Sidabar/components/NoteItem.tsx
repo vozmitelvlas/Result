@@ -1,10 +1,15 @@
-import {useConfirmModal, useNoteActions} from "../../../../hooks";
-import type {NoteItemProps} from "../../../../types";
+import {useConfirmModal, useNoteActions} from "../../../../../hooks";
+import {formatNoteDate} from "../../../../../utils";
 import {NavLink, useNavigate} from "react-router";
 import {Group, Stack, Text} from "@mantine/core";
-import {formatNoteDate} from "../../../../utils";
+import type {Note} from "../../../../../types";
 import {useLongPress} from "@mantine/hooks";
 import removeMd from "remove-markdown";
+
+interface NoteItemProps {
+    note: Note,
+    onSelect: () => void
+}
 
 export const NoteItem = ({note, onSelect}: NoteItemProps) => {
     const {confirm} = useConfirmModal();

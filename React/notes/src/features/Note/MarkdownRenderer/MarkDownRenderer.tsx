@@ -1,10 +1,14 @@
 import {Blockquote, Box, Title} from "@mantine/core";
 import ReactMarkdown from "react-markdown";
-import {CodeBlock} from "./components";
+import {CodeBlock} from "./components/CodeBlock.tsx";
 import remarkGfm from "remark-gfm";
 import {GrBlockQuote} from "react-icons/gr";
 
-export const MarkdownRenderer = ({content}: { content: string }) => {
+interface MarkDownRendererProps {
+    content: string;
+}
+
+export const MarkdownRenderer = ({content}: MarkDownRendererProps) => {
     return (
         <Box style={{lineHeight: "1.5"}}>
             <ReactMarkdown

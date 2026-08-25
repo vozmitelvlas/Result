@@ -1,9 +1,8 @@
 import {ConfirmModalProvider} from "../../providers";
 import {AppShell, ScrollArea} from "@mantine/core";
 import {useDisclosure} from "@mantine/hooks";
+import {Header, Sidebar} from "./components";
 import {Outlet} from "react-router";
-import {Sidebar} from "./Sidebar";
-import {Header} from "./Header";
 
 export const NotesLayout = () => {
     const [opened, {toggle}] = useDisclosure();

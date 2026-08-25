@@ -1,8 +1,8 @@
-import type {ConfirmModalOptions} from "../types";
 import {createContext} from "react";
+import type {ConfirmModalOptions} from "../types";
 
-interface ConfirmModalContext {
+interface ConfirmModalContextValue {
     confirm: (options: ConfirmModalOptions) => void;
 }
 
-export const ConfirmModalContext = createContext<ConfirmModalContext | null>(null);
+export const ConfirmModalContext = createContext<ConfirmModalContextValue | null>(null);

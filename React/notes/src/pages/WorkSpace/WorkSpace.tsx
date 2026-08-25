@@ -1,8 +1,8 @@
 import {Center, Paper, Stack, Text, Title} from "@mantine/core";
 import {useLocation, useParams} from "react-router";
 import {NoteContent, NoteHeader} from "./components";
-import {formatNoteDate} from "../../../utils";
-import {useNote} from "../../../hooks";
+import {formatNoteDate} from "../../utils";
+import {useNote} from "../../hooks";
 
 export const WorkSpace = () => {
     const {noteId} = useParams();

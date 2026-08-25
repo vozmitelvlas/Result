@@ -1,6 +1,10 @@
-import type {SearchProps} from "../../../../types";
 import {IoIosSearch} from "react-icons/io";
 import {TextInput} from "@mantine/core";
+
+interface SearchProps {
+    value: string,
+    setValue: (value: string) => void
+}
 
 export const Search = ({value, setValue}: SearchProps) =>
     <TextInput

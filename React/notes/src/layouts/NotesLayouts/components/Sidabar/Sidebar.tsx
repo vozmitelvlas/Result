@@ -1,10 +1,14 @@
 import {useDebouncedValue} from "@mantine/hooks";
 import {NoteItem, Search} from "./components";
-import {useNotes} from "../../../hooks";
+import {useNotes} from "../../../../hooks";
 import {Box, ScrollArea} from "@mantine/core";
 import {useState} from "react";
 
-export const Sidebar = ({onNoteSelect}: { onNoteSelect: () => void }) => {
+interface Sidebar {
+    onNoteSelect: () => void;
+}
+
+export const Sidebar = ({onNoteSelect}: Sidebar) => {
     const [searchValue, setSearchValue] = useState("");
     const [debouncedSearch] = useDebouncedValue(searchValue, 500);
     const notes = useNotes(debouncedSearch);

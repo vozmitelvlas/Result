@@ -6,7 +6,11 @@ import "easymde/dist/easymde.min.css";
 import {useState} from "react";
 import styles from "./MDE.module.css";
 
-export const ContentEditor = ({note}: { note: Note }) => {
+interface ContentEditorProps {
+    note: Note;
+}
+
+export const ContentEditor = ({note}: ContentEditorProps) => {
     const [content, setContent] = useState(note.content);
     useNoteAutoSave(content, note, 'content');
 

@@ -1,8 +1,12 @@
 import {Button, Center, Paper, PasswordInput, Stack, TextInput, Title} from "@mantine/core";
-import type {LoginFormValues} from "../../types";
 import {useNavigate} from "react-router";
 import {useForm} from '@mantine/form';
 import {useAuth} from "../../hooks";
+
+interface LoginFormValues {
+    username: string,
+    password: string
+}
 
 export const Login = () => {
     const navigate = useNavigate();

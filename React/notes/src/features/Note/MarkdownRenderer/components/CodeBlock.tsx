@@ -1,8 +1,8 @@
+import {Highlight, themes} from "prism-react-renderer";
 import type {HTMLAttributes} from "react";
 import type {ExtraProps} from "react-markdown";
-import {Highlight, themes} from "prism-react-renderer";
 
-type CodeBlockProps = HTMLAttributes<HTMLElement> & ExtraProps;
+export type CodeBlockProps = HTMLAttributes<HTMLElement> & ExtraProps;
 
 export const CodeBlock = ({children, className}: CodeBlockProps) => {
     const match = /language-(\w+)/.exec(className || "");

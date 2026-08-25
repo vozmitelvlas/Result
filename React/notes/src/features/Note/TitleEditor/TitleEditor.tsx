@@ -1,10 +1,14 @@
 import {useNoteAutoSave} from "../../../hooks";
-import type {Note} from "../../../types";
 import {TextInput} from "@mantine/core";
 import {useState} from "react";
 import classes from "./TitleEditor.module.css";
+import type {Note} from "../../../types";
 
-export const TitleEditor = ({note}: { note: Note }) => {
+interface TitleEditorProps {
+    note: Note;
+}
+
+export const TitleEditor = ({note}: TitleEditorProps) => {
     const [title, setTitle] = useState(note.title);
     useNoteAutoSave(title, note, 'title');
 

@@ -14,7 +14,7 @@ export const NotesLayout = () => {
             navbar={{width: 300, breakpoint: 'xs', collapsed: {mobile: !opened}}}
         >
             <AppShell.Header>
-                <Header opened={opened} onMenuClick={toggle}/>
+                <Header opened={opened} closeSideBar={toggle}/>
             </AppShell.Header>
 
             <AppShell.Navbar>

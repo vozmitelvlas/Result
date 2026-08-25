@@ -1,0 +1,1 @@
+export const HydrateFallbackComponent = () => <h2>🌀 Загрузка страницы...</h2>;

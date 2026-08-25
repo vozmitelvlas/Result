@@ -1,5 +1,5 @@
-import {ContentEditor, MarkdownRenderer} from "../../../features";
-import type {Note} from "../../../types";
+import {ContentEditor, MarkdownRenderer} from "@/features";
+import type {Note} from "@/types";
 
 interface NoteContentProps {
     isEditing: boolean,

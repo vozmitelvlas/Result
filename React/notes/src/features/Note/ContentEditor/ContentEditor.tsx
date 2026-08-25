@@ -1,10 +1,10 @@
 import SimpleMdeReact from "react-simplemde-editor";
 import {editorOptions} from "./editorOptions.ts";
-import {useNoteAutoSave} from "../../../hooks";
-import type {Note} from "../../../types";
-import "easymde/dist/easymde.min.css";
+import {useNoteAutoSave} from "@/hooks";
+import type {Note} from "@/types";
 import {useState} from "react";
 import styles from "./MDE.module.css";
+import "easymde/dist/easymde.min.css";
 
 interface ContentEditorProps {
     note: Note;

@@ -1,8 +1,8 @@
 import {type PropsWithChildren, useCallback, useState} from "react";
-import {ConfirmModalContext} from "../context";
 import {Button, Center, Group, Modal} from "@mantine/core";
+import type {ConfirmModalOptions} from "@/types";
+import {ConfirmModalContext} from "@/context";
 import {useDisclosure} from "@mantine/hooks";
-import type {ConfirmModalOptions} from "../types";
 
 export const ConfirmModalProvider = ({children}: PropsWithChildren) => {
     const [opened, {open, close}] = useDisclosure(false);

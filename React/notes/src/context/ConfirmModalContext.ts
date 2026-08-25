@@ -1,5 +1,5 @@
+import type {ConfirmModalOptions} from "@/types";
 import {createContext} from "react";
-import type {ConfirmModalOptions} from "../types";
 
 interface ConfirmModalContextValue {
     confirm: (options: ConfirmModalOptions) => void;

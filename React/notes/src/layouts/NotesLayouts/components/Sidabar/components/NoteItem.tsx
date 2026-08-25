@@ -1,10 +1,10 @@
-import {useConfirmModal, useNoteActions} from "../../../../../hooks";
-import {formatNoteDate} from "../../../../../utils";
+import {useConfirmModal, useNoteActions} from "@/hooks";
 import {NavLink, useNavigate} from "react-router";
 import {Group, Stack, Text} from "@mantine/core";
-import type {Note} from "../../../../../types";
 import {useLongPress} from "@mantine/hooks";
 import removeMd from "remove-markdown";
+import {formatNoteDate} from "@/utils";
+import type {Note} from "@/types";
 
 interface NoteItemProps {
     note: Note,

@@ -1,8 +1,8 @@
 import {type PropsWithChildren, useCallback} from "react";
-import {createDefaultNote} from "../utils";
-import {NotesContext} from "../context";
-import type {Note} from "../types";
-import {db} from "../db";
+import {createDefaultNote} from "@/utils";
+import {NotesContext} from "@/context";
+import type {Note} from "@/types";
+import {db} from "@/db";
 
 export const NotesProvider = ({children}: PropsWithChildren) => {
     const addNote = useCallback((note?: Note) => {

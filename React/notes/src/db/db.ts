@@ -1,5 +1,5 @@
 import Dexie, {type Table} from "dexie";
-import type {Note} from "../types";
+import type {Note} from "@/types";
 
 class NoteDatabase extends Dexie {
     notes!: Table<Note, string>;

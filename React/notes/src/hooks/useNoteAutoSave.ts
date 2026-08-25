@@ -1,7 +1,7 @@
 import {useNoteActions} from "./useNoteActions.ts";
 import {useDebouncedValue} from "@mantine/hooks";
-import type {Note} from "../types";
 import {useEffect, useRef} from "react";
+import type {Note} from "@/types";
 
 export const useNoteAutoSave = (value: string, note: Note, field: 'title' | 'content') => {
     const [debouncedValue] = useDebouncedValue(value, 500);

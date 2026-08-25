@@ -1,4 +1,4 @@
-import type {Note} from "../types";
+import type {Note} from "@/types";
 import {db} from "./db.ts";
 
 export const createNote = (note: Note) => {

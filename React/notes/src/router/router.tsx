@@ -1,6 +1,6 @@
+import {HydrateFallbackComponent, ProtectedPage} from "@/components";
 import {createBrowserRouter, Navigate, Outlet} from "react-router";
-import {AuthProvider, NotesProvider} from "../providers";
-import {HydrateFallbackComponent, ProtectedPage} from "../components";
+import {AuthProvider, NotesProvider} from "@/providers";
 import {MantineProvider} from "@mantine/core";
 
 export const router = createBrowserRouter([

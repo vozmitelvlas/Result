@@ -1,5 +1,5 @@
-import {ConfirmModalProvider} from "../../providers";
 import {AppShell, ScrollArea} from "@mantine/core";
+import {ConfirmModalProvider} from "@/providers";
 import {useDisclosure} from "@mantine/hooks";
 import {Header, Sidebar} from "./components";
 import {Outlet} from "react-router";

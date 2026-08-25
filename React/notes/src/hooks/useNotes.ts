@@ -1,6 +1,6 @@
 import {useLiveQuery} from "dexie-react-hooks";
-import type {Note} from "../types";
-import {db} from "../db";
+import type {Note} from "@/types";
+import {db} from "@/db";
 
 export const useNotes = (query: string) => {
     return useLiveQuery<Note[]>(async () => {

@@ -1,4 +1,4 @@
-import type {Note} from "../types";
+import type {Note} from "@/types";
 
 export const createDefaultNote = (): Note => ({
     id: crypto.randomUUID(),

@@ -1,6 +1,6 @@
-import {createContext} from "react";
-import type {Note} from "../types";
 import type {PromiseExtended} from "dexie";
+import {createContext} from "react";
+import type {Note} from "@/types";
 
 interface NotesContextValue {
     addNote: (note?: Note) => PromiseExtended<string>,

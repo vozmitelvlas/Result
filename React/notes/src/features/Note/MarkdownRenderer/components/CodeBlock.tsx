@@ -1,6 +1,6 @@
 import {Highlight, themes} from "prism-react-renderer";
-import type {HTMLAttributes} from "react";
 import type {ExtraProps} from "react-markdown";
+import type {HTMLAttributes} from "react";
 
 export type CodeBlockProps = HTMLAttributes<HTMLElement> & ExtraProps;
 

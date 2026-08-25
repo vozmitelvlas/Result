@@ -1,6 +1,6 @@
-import {useAuth, useNoteActions} from "../../../../../hooks";
 import {HiOutlinePencilSquare} from "react-icons/hi2";
 import {ActionIcon, Group} from "@mantine/core";
+import {useAuth, useNoteActions} from "@/hooks";
 import {IoIosLogOut} from "react-icons/io";
 import {useNavigate} from "react-router";
 

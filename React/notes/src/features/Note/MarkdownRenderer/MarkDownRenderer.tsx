@@ -1,8 +1,8 @@
-import {Blockquote, Box, Title} from "@mantine/core";
-import ReactMarkdown from "react-markdown";
 import {CodeBlock} from "./components/CodeBlock.tsx";
-import remarkGfm from "remark-gfm";
+import {Blockquote, Box, Title} from "@mantine/core";
 import {GrBlockQuote} from "react-icons/gr";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface MarkDownRendererProps {
     content: string;

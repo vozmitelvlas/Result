@@ -1,4 +1,4 @@
-import {NotesContext} from "../context";
+import {NotesContext} from "@/context";
 import {useContext} from "react";
 
 export const useNoteActions = () => {

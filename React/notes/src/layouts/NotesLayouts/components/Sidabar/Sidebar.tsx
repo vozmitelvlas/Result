@@ -1,7 +1,7 @@
 import {useDebouncedValue} from "@mantine/hooks";
 import {NoteItem, Search} from "./components";
-import {useNotes} from "../../../../hooks";
 import {Box, ScrollArea} from "@mantine/core";
+import {useNotes} from "@/hooks";
 import {useState} from "react";
 
 interface Sidebar {

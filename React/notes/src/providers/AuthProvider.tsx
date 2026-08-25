@@ -1,8 +1,8 @@
 import {type PropsWithChildren, useCallback, useState} from "react";
-import {AUTH_STORAGE_KEY} from "../config";
-import {AuthContext} from "../context";
-import type {User} from "../types";
-import {users} from "../constants";
+import {AUTH_STORAGE_KEY} from "@/config";
+import {AuthContext} from "@/context";
+import type {User} from "@/types";
+import {users} from "@/constants";
 
 export const AuthProvider = ({children}: PropsWithChildren) => {
     const [user, setUser] = useState<User | null>(() => {

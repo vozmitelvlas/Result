@@ -1,19 +1,18 @@
+import {ContentErrorPage} from "@/pages/ContentErrorPage/ContentErrorPage.tsx";
 import {createBrowserRouter, Navigate, Outlet, redirect} from "react-router";
 import {HydrateFallbackComponent, ProtectedPage} from "@/components";
 import {AuthProvider, NotesProvider} from "@/providers";
-import {MantineProvider} from "@mantine/core";
 
 export const router = createBrowserRouter([
     {
         element: (
-            <MantineProvider>
-                <AuthProvider>
-                    <NotesProvider>
-                        <Outlet/>
-                    </NotesProvider>
-                </AuthProvider>
-            </MantineProvider>
+            <AuthProvider>
+                <NotesProvider>
+                    <Outlet/>
+                </NotesProvider>
+            </AuthProvider>
         ),
+        errorElement: <ContentErrorPage/>,
         hydrateFallbackElement: <HydrateFallbackComponent/>,
         children: [
             {

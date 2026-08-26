@@ -25,7 +25,6 @@ export const WorkSpacePage = () => {
                 <NoteHeader isEditing={isEditing} note={note}/>
 
                 <NoteContent isEditing={isEditing} note={note}/>
-
             </Stack>
         </Paper>
     );

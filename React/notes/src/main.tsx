@@ -1,7 +1,8 @@
 import {createRoot} from 'react-dom/client';
 import {seedDatabase} from "./db";
-import '@mantine/core/styles.css';
 import App from "./App.tsx";
+import "easymde/dist/easymde.min.css";
+import '@mantine/core/styles.css';
 import './index.css';
 
 await seedDatabase();

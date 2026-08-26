@@ -31,8 +31,8 @@ export const NoteItem = ({note, onSelect}: NoteItemProps) => {
                 display: "block",
                 textDecoration: "none",
                 color: "inherit",
-                backgroundColor: isActive ? "var(--mantine-color-blue-0)" : undefined,
-                borderBottom: "1px solid var(--mantine-color-gray-3)",
+                backgroundColor: isActive ? 'var(--mantine-color-blue-light)' : undefined,
+                borderBottom: "1px solid var(--mantine-color-default-border)",
             })}
         >
             <Stack gap={0} px="sm" py="sm">

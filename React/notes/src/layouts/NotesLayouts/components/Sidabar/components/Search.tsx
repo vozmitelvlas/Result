@@ -8,11 +8,11 @@ interface SearchProps {
 
 export const Search = ({value, setValue}: SearchProps) =>
     <TextInput
-        style={{borderBottom: '1px solid var(--mantine-color-gray-3)'}}
+        style={{borderBottom: '1px solid var(--mantine-color-default-border)'}}
         py={{base: 6, xs: 4}}
         variant="unstyled"
         value={value}
         onChange={({target}) => setValue(target.value)}
         placeholder="Поиск заметок..."
-        leftSection={<IoIosSearch size={24} color="var(--mantine-color-blue-6)"/>}
+        leftSection={<IoIosSearch size={24} color="var(--mantine-color-blue-outline)"/>}
     />;

@@ -1,12 +1,15 @@
 .EasyMDEContainer :global(.editor-toolbar) {
     border: none;
-    border-bottom: 1px solid var(--mantine-color-gray-3);
+    border-bottom: 1px solid var(--mantine-color-default-border);
 }
 
 .EasyMDEContainer :global(.CodeMirror) {
     padding: 0;
     border: none;
     border-radius: 0;
+
+    background: var(--mantine-color-body);
+    color: var(--mantine-color-text);
 }
 
 .EasyMDEContainer :global(.CodeMirror-vscrollbar) {
@@ -22,8 +25,25 @@
 .EasyMDEContainer :global(.editor-preview) {
     scrollbar-width: none;
     -ms-overflow-style: none;
+
+    background: var(--mantine-color-body);
+    color: var(--mantine-color-text);
 }
 
 .EasyMDEContainer :global(.editor-preview)::-webkit-scrollbar {
     display: none;
+}
+
+.EasyMDEContainer :global(.editor-toolbar button) {
+    background: var(--mantine-color-body);
+    color: var(--mantine-color-text);
+}
+
+.EasyMDEContainer :global(.CodeMirror-cursor) {
+    border-left-color: var(--mantine-color-text);
+}
+
+.EasyMDEContainer :global(.editor-toolbar .separator) {
+    border-left-color: var(--mantine-color-default-border);
+    border-right-color: var(--mantine-color-default-border);
 }

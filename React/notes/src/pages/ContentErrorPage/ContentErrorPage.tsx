@@ -28,10 +28,9 @@ export const ContentErrorPage = () => {
                 <Stack align="center">
                     <Title order={2}>Что-то пошло не так</Title>
 
-                    <Text>
-                        Произошла непредвиденная ошибка.
-                        Попробуйте обновить страницу.
-                    </Text>
+                    <Text>Произошла непредвиденная ошибка</Text>
+
+                    <Text>Попробуйте обновить страницу</Text>
 
                     <Button onClick={() => window.location.reload()}>Обновить страницу</Button>
                 </Stack>

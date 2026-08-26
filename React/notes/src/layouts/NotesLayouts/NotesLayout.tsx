@@ -12,7 +12,7 @@ export const NotesLayout = () => {
             <AppShell
                 px="xs"
                 header={{height: 60}}
-                navbar={{width: 300, breakpoint: 'xs', collapsed: {mobile: !opened}}}
+                navbar={{width: 300, breakpoint: 'sm', collapsed: {mobile: !opened}}}
             >
                 <AppShell.Header>
                     <Header opened={opened} closeSideBar={toggle}/>

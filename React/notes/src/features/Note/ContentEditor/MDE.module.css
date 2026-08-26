@@ -1,6 +1,8 @@
 .EasyMDEContainer :global(.editor-toolbar) {
     border: none;
     border-bottom: 1px solid var(--mantine-color-default-border);
+    white-space: nowrap;
+    overflow-x: auto;
 }
 
 .EasyMDEContainer :global(.CodeMirror) {

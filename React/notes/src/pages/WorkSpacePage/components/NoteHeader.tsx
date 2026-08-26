@@ -5,6 +5,7 @@ import {MdModeEdit} from "react-icons/md";
 import {useNavigate} from "react-router";
 import {TitleEditor} from "@/features";
 import type {Note} from "@/types";
+import {useMediaQuery} from "@mantine/hooks";
 
 interface NoteHeaderProps {
     isEditing: boolean,
@@ -15,6 +16,7 @@ export const NoteHeader = ({isEditing, note}: NoteHeaderProps) => {
     const navigate = useNavigate();
     const {confirm} = useConfirmModal();
     const {deleteNote} = useNoteActions();
+    const isMobile = useMediaQuery('(max-width: 575px)');
 
     const handleCompleteEditing = () => navigate(`/notes/${note.id}`);
 
@@ -25,19 +27,28 @@ export const NoteHeader = ({isEditing, note}: NoteHeaderProps) => {
     const handleDeleteClick = () => confirm({title: 'Удалить заметку?', onConfirm: handleDeleteNote});
 
     return isEditing ? (
-        <Group justify="space-between">
+        <Group justify="space-between" wrap="nowrap">
             <TitleEditor note={note}/>
-            <Button variant="outline" onClick={handleCompleteEditing}>Готово</Button>
+            <Button
+                variant="outline"
+                onClick={handleCompleteEditing}
+                style={{flexShrink: 0}}
+                size={isMobile ? 'xs' : 'md'}
+            >
+                Готово
+            </Button>
         </Group>
     ) : (
         <Group justify="space-between">
-            <Title>{note.title}</Title>
+            <Title order={isMobile ? 2 : 1}>{note.title}</Title>
             <Group>
-                <ActionIcon variant="outline" size="lg" aria-label="Settings" onClick={handleToEditNote}>
-                    <MdModeEdit size={24}/>
+                <ActionIcon variant="outline" size={isMobile ? 'md' : 'lg'} aria-label="Settings"
+                            onClick={handleToEditNote}>
+                    <MdModeEdit size={isMobile ? 18 : 24}/>
                 </ActionIcon>
-                <ActionIcon variant="outline" size="lg" aria-label="Settings" onClick={handleDeleteClick}>
-                    <RiDeleteBin6Line size={24}/>
+                <ActionIcon variant="outline" size={isMobile ? 'md' : 'lg'} aria-label="Settings"
+                            onClick={handleDeleteClick}>
+                    <RiDeleteBin6Line size={isMobile ? 18 : 24}/>
                 </ActionIcon>
             </Group>
         </Group>

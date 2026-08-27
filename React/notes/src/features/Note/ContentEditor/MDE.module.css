@@ -1,11 +1,11 @@
-:global(.EasyMDEContainer .editor-toolbar) {
+.editor :global(.EasyMDEContainer .editor-toolbar) {
     border: none;
     border-bottom: 1px solid var(--mantine-color-default-border);
     white-space: nowrap;
     overflow-x: auto;
 }
 
-:global(.EasyMDEContainer .CodeMirror) {
+.editor :global(.EasyMDEContainer .CodeMirror) {
     padding: 0;
     border: none;
     border-radius: 0;
@@ -14,18 +14,18 @@
     color: var(--mantine-color-text);
 }
 
-:global(.EasyMDEContainer .CodeMirror-vscrollbar),
-:global(.EasyMDEContainer .CodeMirror-hscrollbar) {
+.editor :global(.EasyMDEContainer .CodeMirror-vscrollbar),
+.editor :global(.EasyMDEContainer .CodeMirror-hscrollbar) {
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
 
-:global(.EasyMDEContainer .CodeMirror-vscrollbar)::-webkit-scrollbar,
-:global(.EasyMDEContainer .CodeMirror-hscrollbar)::-webkit-scrollbar {
+.editor :global(.EasyMDEContainer .CodeMirror-vscrollbar)::-webkit-scrollbar,
+.editor :global(.EasyMDEContainer .CodeMirror-hscrollbar)::-webkit-scrollbar {
     display: none;
 }
 
-:global(.EasyMDEContainer .editor-preview) {
+.editor :global(.EasyMDEContainer .editor-preview) {
     scrollbar-width: none;
     -ms-overflow-style: none;
 
@@ -33,20 +33,20 @@
     color: var(--mantine-color-text);
 }
 
-:global(.EasyMDEContainer .editor-preview)::-webkit-scrollbar {
+.editor :global(.EasyMDEContainer .editor-preview)::-webkit-scrollbar {
     display: none;
 }
 
-:global(.EasyMDEContainer .editor-toolbar button) {
+.editor :global(.EasyMDEContainer .editor-toolbar button) {
     background: var(--mantine-color-body);
     color: var(--mantine-color-text);
 }
 
-:global(.EasyMDEContainer .CodeMirror-cursor) {
+.editor :global(.EasyMDEContainer .CodeMirror-cursor) {
     border-left-color: var(--mantine-color-text);
 }
 
-:global(.EasyMDEContainer .editor-toolbar .separator) {
+.editor :global(.EasyMDEContainer .editor-toolbar .separator) {
     border-left-color: var(--mantine-color-default-border);
     border-right-color: var(--mantine-color-default-border);
 }

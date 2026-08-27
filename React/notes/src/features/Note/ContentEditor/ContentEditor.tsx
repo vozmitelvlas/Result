@@ -14,7 +14,7 @@ export const ContentEditor = ({note}: ContentEditorProps) => {
     useNoteAutoSave(content, note, 'content');
 
     return <SimpleMdeReact
-        className={styles.EasyMDEContainer}
+        className={styles.editor}
         value={content}
         onChange={setContent}
         options={editorOptions}

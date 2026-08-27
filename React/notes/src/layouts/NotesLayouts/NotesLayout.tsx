@@ -1,12 +1,11 @@
 import {AppShell, ScrollArea} from "@mantine/core";
 import {ConfirmModalProvider} from "@/providers";
-import {useDisclosure} from "@mantine/hooks";
 import {Header, Sidebar} from "./components";
 import {Outlet} from "react-router";
+import {useMenu} from "@/hooks";
 
 export const NotesLayout = () => {
-    const [opened, {toggle}] = useDisclosure();
-
+    const {opened} = useMenu();
     return (
         <ConfirmModalProvider>
             <AppShell
@@ -15,11 +14,11 @@ export const NotesLayout = () => {
                 navbar={{width: 300, breakpoint: 'sm', collapsed: {mobile: !opened}}}
             >
                 <AppShell.Header>
-                    <Header opened={opened} closeSideBar={toggle}/>
+                    <Header/>
                 </AppShell.Header>
 
                 <AppShell.Navbar>
-                    <Sidebar onNoteSelect={toggle}/>
+                    <Sidebar/>
                 </AppShell.Navbar>
 
                 <AppShell.Main>

@@ -1,11 +1,11 @@
-.EasyMDEContainer :global(.editor-toolbar) {
+:global(.EasyMDEContainer .editor-toolbar) {
     border: none;
     border-bottom: 1px solid var(--mantine-color-default-border);
     white-space: nowrap;
     overflow-x: auto;
 }
 
-.EasyMDEContainer :global(.CodeMirror) {
+:global(.EasyMDEContainer .CodeMirror) {
     padding: 0;
     border: none;
     border-radius: 0;
@@ -14,17 +14,18 @@
     color: var(--mantine-color-text);
 }
 
-.EasyMDEContainer :global(.CodeMirror-vscrollbar) {
+:global(.EasyMDEContainer .CodeMirror-vscrollbar),
+:global(.EasyMDEContainer .CodeMirror-hscrollbar) {
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
 
-.EasyMDEContainer :global(.CodeMirror-vscrollbar)::-webkit-scrollbar {
+:global(.EasyMDEContainer .CodeMirror-vscrollbar)::-webkit-scrollbar,
+:global(.EasyMDEContainer .CodeMirror-hscrollbar)::-webkit-scrollbar {
     display: none;
 }
 
-
-.EasyMDEContainer :global(.editor-preview) {
+:global(.EasyMDEContainer .editor-preview) {
     scrollbar-width: none;
     -ms-overflow-style: none;
 
@@ -32,20 +33,20 @@
     color: var(--mantine-color-text);
 }
 
-.EasyMDEContainer :global(.editor-preview)::-webkit-scrollbar {
+:global(.EasyMDEContainer .editor-preview)::-webkit-scrollbar {
     display: none;
 }
 
-.EasyMDEContainer :global(.editor-toolbar button) {
+:global(.EasyMDEContainer .editor-toolbar button) {
     background: var(--mantine-color-body);
     color: var(--mantine-color-text);
 }
 
-.EasyMDEContainer :global(.CodeMirror-cursor) {
+:global(.EasyMDEContainer .CodeMirror-cursor) {
     border-left-color: var(--mantine-color-text);
 }
 
-.EasyMDEContainer :global(.editor-toolbar .separator) {
+:global(.EasyMDEContainer .editor-toolbar .separator) {
     border-left-color: var(--mantine-color-default-border);
     border-right-color: var(--mantine-color-default-border);
 }

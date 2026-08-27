@@ -1,28 +1,23 @@
 import {HiOutlinePencilSquare} from "react-icons/hi2";
 import {ActionIcon, Group, useMantineColorScheme} from "@mantine/core";
-import {useAuth, useNoteActions} from "@/hooks";
+import {useAuth, useMenu, useNoteActions} from "@/hooks";
 import {IoIosLogOut} from "react-icons/io";
 import {useNavigate} from "react-router";
 import {CiDark, CiLight} from "react-icons/ci";
 import {useMediaQuery} from "@mantine/hooks";
 
-interface HeaderNoteActionsProps {
-    onNoteAdd: () => void;
-}
-
-//close burger
-
-export const HeaderNoteActions = ({onNoteAdd}: HeaderNoteActionsProps) => {
+export const HeaderNoteActions = () => {
     const {logout} = useAuth();
     const navigate = useNavigate();
     const {addNote} = useNoteActions();
-    const {colorScheme, toggleColorScheme} = useMantineColorScheme();
     const isMobile = useMediaQuery('(max-width: 575px)');
+    const {colorScheme, toggleColorScheme} = useMantineColorScheme();
+    const {close: closeMenu} = useMenu();
 
     const handleAddNote = () => {
         addNote().then(noteId => {
-            navigate(`/notes/${noteId}`);
-            onNoteAdd();
+            navigate(`/notes/${noteId}/edit`);
+            closeMenu();
         });
     };
 

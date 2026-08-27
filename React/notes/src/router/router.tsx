@@ -1,16 +1,14 @@
-import {ContentErrorPage} from "@/pages/ContentErrorPage/ContentErrorPage.tsx";
 import {createBrowserRouter, Navigate, Outlet, redirect} from "react-router";
 import {HydrateFallbackComponent, ProtectedPage} from "@/components";
-import {AuthProvider, NotesProvider} from "@/providers";
+import {AppProviders} from "@/providers/AppProviders.tsx";
+import {ContentErrorPage} from "@/pages";
 
 export const router = createBrowserRouter([
     {
         element: (
-            <AuthProvider>
-                <NotesProvider>
-                    <Outlet/>
-                </NotesProvider>
-            </AuthProvider>
+            <AppProviders>
+                <Outlet/>
+            </AppProviders>
         ),
         errorElement: <ContentErrorPage/>,
         hydrateFallbackElement: <HydrateFallbackComponent/>,

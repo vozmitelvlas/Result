@@ -1,5 +1,5 @@
 import {ActionIcon, Button, Group, Title} from "@mantine/core";
-import {useConfirmModal, useNoteActions} from "@/hooks";
+import {useConfirmModal, useMenu, useNoteActions} from "@/hooks";
 import {RiDeleteBin6Line} from "react-icons/ri";
 import {MdModeEdit} from "react-icons/md";
 import {useNavigate} from "react-router";
@@ -14,6 +14,7 @@ interface NoteHeaderProps {
 
 export const NoteHeader = ({isEditing, note}: NoteHeaderProps) => {
     const navigate = useNavigate();
+    const {open: openMenu} = useMenu();
     const {confirm} = useConfirmModal();
     const {deleteNote} = useNoteActions();
     const isMobile = useMediaQuery('(max-width: 575px)');
@@ -24,7 +25,12 @@ export const NoteHeader = ({isEditing, note}: NoteHeaderProps) => {
 
     const handleDeleteNote = () => deleteNote(note.id).then(() => navigate('/notes'));
 
-    const handleDeleteClick = () => confirm({title: 'Удалить заметку?', onConfirm: handleDeleteNote});
+    const handleDeleteClick = () => confirm({
+        title: 'Удалить заметку?', onConfirm: () => {
+            handleDeleteNote();
+            openMenu();
+        }
+    });
 
     return isEditing ? (
         <Group justify="space-between" wrap="nowrap">

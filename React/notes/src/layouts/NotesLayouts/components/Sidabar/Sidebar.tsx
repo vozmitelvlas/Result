@@ -4,11 +4,7 @@ import {Box, ScrollArea} from "@mantine/core";
 import {useNotes} from "@/hooks";
 import {useState} from "react";
 
-interface Sidebar {
-    onNoteSelect: () => void;
-}
-
-export const Sidebar = ({onNoteSelect}: Sidebar) => {
+export const Sidebar = () => {
     const [searchValue, setSearchValue] = useState("");
     const [debouncedSearch] = useDebouncedValue(searchValue, 500);
     const notes = useNotes(debouncedSearch);
@@ -21,7 +17,6 @@ export const Sidebar = ({onNoteSelect}: Sidebar) => {
                     <NoteItem
                         key={note.id}
                         note={note}
-                        onSelect={onNoteSelect}
                     />
                 ))}
             </ScrollArea>

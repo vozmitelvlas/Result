@@ -1,4 +1,4 @@
-import {useConfirmModal, useNoteActions} from "@/hooks";
+import {useConfirmModal, useMenu, useNoteActions} from "@/hooks";
 import {NavLink, useNavigate} from "react-router";
 import {Group, Stack, Text} from "@mantine/core";
 import {useLongPress} from "@mantine/hooks";
@@ -8,13 +8,13 @@ import type {Note} from "@/types";
 
 interface NoteItemProps {
     note: Note,
-    onSelect: () => void
 }
 
-export const NoteItem = ({note, onSelect}: NoteItemProps) => {
-    const {confirm} = useConfirmModal();
-    const {deleteNote} = useNoteActions();
+export const NoteItem = ({note}: NoteItemProps) => {
     const navigate = useNavigate();
+    const {confirm} = useConfirmModal();
+    const {close: closeMenu} = useMenu();
+    const {deleteNote} = useNoteActions();
 
     const handleDelete = () => deleteNote(note.id).then(() => navigate('/notes'));
 
@@ -25,7 +25,7 @@ export const NoteItem = ({note, onSelect}: NoteItemProps) => {
     return (
         <NavLink
             {...longPress}
-            onClick={onSelect}
+            onClick={closeMenu}
             to={`/notes/${note.id}`}
             style={({isActive}) => ({
                 display: "block",
@@ -39,7 +39,6 @@ export const NoteItem = ({note, onSelect}: NoteItemProps) => {
                 <Text fw={700} size="lg" truncate>
                     {note.title ? note.title : 'Без названия'}
                 </Text>
-
                 <Group gap="xs" wrap="nowrap">
                     <Text size="md" fw={500} style={{flexShrink: 0}}>
                         {formatNoteDate(note.updatedAt)}

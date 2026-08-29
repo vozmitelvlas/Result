@@ -6,6 +6,7 @@ export const editorOptions: Options = {
     status: false,
     placeholder: "Введите текст заметки...",
     toolbar: ["bold", "italic", "heading", "|", "quote", "unordered-list",
-        "ordered-list", "|", "link", "code", "preview",],
+        "ordered-list", "|", "link", "code", 'table', 'check-list'],
     maxHeight: "calc(100dvh - 250px)",
+    autoDownloadFontAwesome: false,
 };

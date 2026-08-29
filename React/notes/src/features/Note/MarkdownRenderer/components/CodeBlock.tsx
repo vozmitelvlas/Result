@@ -1,10 +1,12 @@
 import {Highlight, themes} from "prism-react-renderer";
 import type {ExtraProps} from "react-markdown";
 import type {HTMLAttributes} from "react";
+import {useMantineColorScheme} from "@mantine/core";
 
 export type CodeBlockProps = HTMLAttributes<HTMLElement> & ExtraProps;
 
 export const CodeBlock = ({children, className}: CodeBlockProps) => {
+    const {colorScheme} = useMantineColorScheme();
     const match = /language-(\w+)/.exec(className || "");
     if (!match) {
         return <code>{children}</code>;
@@ -14,7 +16,7 @@ export const CodeBlock = ({children, className}: CodeBlockProps) => {
     const code = String(children).replace(/\n$/, "");
 
     return (
-        <Highlight theme={themes.github} code={code} language={language}>
+        <Highlight theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight} code={code} language={language}>
             {({
                   className,
                   style,

@@ -30,14 +30,14 @@ export const router = createBrowserRouter([
                     {
                         path: '/notes',
                         lazy: async () => {
-                            const {NotesLayout} = await import('../layouts/NotesLayouts/NotesLayout.tsx');
+                            const {NotesLayout} = await import('@/layouts/NotesLayouts/NotesLayout.tsx');
                             return {Component: NotesLayout};
                         },
                         children: [
                             {
                                 index: true,
                                 lazy: async () => {
-                                    const {WorkSpacePage} = await import('../pages/WorkSpacePage/WorkSpacePage.tsx');
+                                    const {WorkSpacePage} = await import('@/pages/WorkSpacePage/WorkSpacePage.tsx');
                                     return {Component: WorkSpacePage};
                                 },
                             },

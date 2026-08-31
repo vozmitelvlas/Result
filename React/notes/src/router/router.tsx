@@ -1,5 +1,5 @@
 import {createBrowserRouter, Navigate, Outlet, redirect} from "react-router";
-import {HydrateFallbackComponent, ProtectedPage} from "@/components";
+import {PageLoader, ProtectedPage} from "@/components";
 import {AppProviders} from "@/providers/AppProviders.tsx";
 import {ContentErrorPage} from "@/pages";
 
@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
             </AppProviders>
         ),
         errorElement: <ContentErrorPage/>,
-        hydrateFallbackElement: <HydrateFallbackComponent/>,
+        hydrateFallbackElement: <PageLoader/>,
         children: [
             {
                 path: '/login',

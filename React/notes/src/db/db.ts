@@ -7,10 +7,10 @@ class NoteDatabase extends Dexie {
     constructor() {
         super("notes");
 
-        this.version(1).stores({
-            notes: "id, title, content, updatedAt",
+        this.version(2).stores({
+            notes: "id, userId, title, content, updatedAt",
         });
     }
 }
 
-export const db = new NoteDatabase()
+export const db = new NoteDatabase();

@@ -14,11 +14,10 @@ export const HeaderNoteActions = () => {
     const {colorScheme, toggleColorScheme} = useMantineColorScheme();
     const {close: closeMenu} = useMenu();
 
-    const handleAddNote = () => {
-        addNote().then(noteId => {
-            navigate(`/notes/${noteId}/edit`);
-            closeMenu();
-        });
+    const handleAddNote = async () => {
+        const noteId = await addNote();
+        closeMenu();
+        navigate(`/notes/${noteId}/edit`);
     };
 
     return (

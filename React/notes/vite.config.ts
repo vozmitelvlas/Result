@@ -4,6 +4,8 @@ import babel from '@rolldown/plugin-babel';
 import {fileURLToPath, URL} from 'node:url';
 import {VitePWA} from "vite-plugin-pwa";
 
+;
+
 // https://vite.dev/config/
 export default defineConfig({
     plugins: [
@@ -82,4 +84,5 @@ export default defineConfig({
             '@': fileURLToPath(new URL('./src', import.meta.url)),
         },
     },
+
 });

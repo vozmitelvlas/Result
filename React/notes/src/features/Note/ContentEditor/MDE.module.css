@@ -1,0 +1,55 @@
+.editor :global(.EasyMDEContainer .editor-toolbar) {
+    padding-left: 0;
+    padding-right: 0;
+    border: none;
+    border-bottom: 1px solid var(--mantine-color-default-border);
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.editor :global(.EasyMDEContainer .CodeMirror) {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+
+    background: var(--mantine-color-body);
+    color: var(--mantine-color-text);
+}
+
+.editor :global(.EasyMDEContainer .CodeMirror-vscrollbar),
+.editor :global(.EasyMDEContainer .CodeMirror-hscrollbar) {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.editor :global(.EasyMDEContainer .CodeMirror-vscrollbar)::-webkit-scrollbar,
+.editor :global(.EasyMDEContainer .CodeMirror-hscrollbar)::-webkit-scrollbar {
+    display: none;
+}
+
+.editor :global(.EasyMDEContainer .editor-preview) {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    background: var(--mantine-color-body);
+    color: var(--mantine-color-text);
+}
+
+.editor :global(.EasyMDEContainer .editor-preview)::-webkit-scrollbar {
+    display: none;
+}
+
+.editor :global(.EasyMDEContainer .editor-toolbar button) {
+    padding: 0;
+    background: var(--mantine-color-body);
+    color: var(--mantine-color-text);
+}
+
+.editor :global(.EasyMDEContainer .CodeMirror-cursor) {
+    border-left-color: var(--mantine-color-text);
+}
+
+.editor :global(.EasyMDEContainer .editor-toolbar .separator) {
+    border-left-color: var(--mantine-color-default-border);
+    border-right-color: var(--mantine-color-default-border);
+}

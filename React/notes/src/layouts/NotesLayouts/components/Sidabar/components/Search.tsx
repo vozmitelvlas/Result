@@ -1,0 +1,18 @@
+import {IoIosSearch} from "react-icons/io";
+import {TextInput} from "@mantine/core";
+
+interface SearchProps {
+    value: string,
+    setValue: (value: string) => void
+}
+
+export const Search = ({value, setValue}: SearchProps) =>
+    <TextInput
+        style={{borderBottom: '1px solid var(--mantine-color-default-border)'}}
+        py={{base: 6, xs: 4}}
+        variant="unstyled"
+        value={value}
+        onChange={({target}) => setValue(target.value)}
+        placeholder="Поиск заметок..."
+        leftSection={<IoIosSearch size={24} color="var(--mantine-color-blue-outline)"/>}
+    />;

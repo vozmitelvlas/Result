@@ -7,7 +7,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Wed Jan 25 2023",
         "name": "Kali Murray",
         "phone": "980-665-1768",
-        "photo": "/images/id-576-200-300.jpg"
+        "photo": "/images/id-576-200-300.jpg",
+        "isFavorite": true,
     },
     {
         "id": "84465d40-ef7b-41c7-8de4-29e7fb4ddd21",
@@ -15,7 +16,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Tue Aug 02 2022",
         "name": "Sydnee Langosh",
         "phone": "(371) 981-1787 x923",
-        "photo": "/images/id-660-200-300.jpg"
+        "photo": "/images/id-660-200-300.jpg",
+        "isFavorite": true,
     },
     {
         "id": "0fc3c0ea-0e30-439b-bf2d-393e044788b2",
@@ -23,7 +25,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Fri Oct 28 2022",
         "name": "Arlie Bruen",
         "phone": "545.338.7920",
-        "photo": "/images/id-339-200-300.jpg"
+        "photo": "/images/id-339-200-300.jpg",
+        "isFavorite": false,
     },
     {
         "id": "08b8735f-c1b6-4029-a96b-3d3e91869727",
@@ -31,7 +34,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Fri Oct 14 2022",
         "name": "Mellie Kessler",
         "phone": "(805) 558-3542",
-        "photo": "/images/id-254-200-300.jpg"
+        "photo": "/images/id-254-200-300.jpg",
+        "isFavorite": false,
     },
     {
         "id": "9dd3369c-e35e-4cff-922c-a3dd16cc475a",
@@ -39,7 +43,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Mon Jun 13 2022",
         "name": "Spencer Jacobson",
         "phone": "1-090-293-8090 x63779",
-        "photo": "/images/id-100-200-300.jpg"
+        "photo": "/images/id-100-200-300.jpg",
+        "isFavorite": false,
     },
     {
         "id": "f70f71ac-937a-44a4-b7cc-654ba4a1b915",
@@ -47,7 +52,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Sun Sep 11 2022",
         "name": "Cara Kutch",
         "phone": "620.649.7734 x8762",
-        "photo": "/images/id-419-200-300.jpg"
+        "photo": "/images/id-419-200-300.jpg",
+        "isFavorite": false,
     },
     {
         "id": "6d71425d-fd8c-4f6e-a676-f4191ec5e901",
@@ -55,7 +61,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Tue Sep 06 2022",
         "name": "Jorge Boehm",
         "phone": "726-914-2311 x610",
-        "photo": "/images/id-47-200-300.jpg"
+        "photo": "/images/id-47-200-300.jpg",
+        "isFavorite": false,
     },
     {
         "id": "9030a77e-7e6c-4052-9736-438b9252073e",
@@ -63,7 +70,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Mon Oct 10 2022",
         "name": "Lorena DuBuque",
         "phone": "282-417-0558 x896",
-        "photo": "/images/id-732-200-300.jpg"
+        "photo": "/images/id-732-200-300.jpg",
+        "isFavorite": false,
     },
     {
         "id": "33fdfec9-4278-4b8c-8fbd-f30cbde96e7b",
@@ -71,7 +79,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Thu Apr 13 2023",
         "name": "Fritz Steuber",
         "phone": "1-116-066-7549 x6719",
-        "photo": "/images/id-68-200-300.jpg"
+        "photo": "/images/id-68-200-300.jpg",
+        "isFavorite": false,
     },
     {
         "id": "2ac1562d-86bb-481d-a293-f052ce2e1f7d",
@@ -79,7 +88,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Sat Jun 25 2022",
         "name": "Sydnee Littel",
         "phone": "750.991.9061 x356",
-        "photo": "/images/id-604-200-300.jpg"
+        "photo": "/images/id-604-200-300.jpg",
+        "isFavorite": false,
     },
     {
         "id": "24145cba-fe1c-477e-83a0-a0c4063f5c92",
@@ -87,7 +97,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Thu Apr 13 2023",
         "name": "Patience Kautzer",
         "phone": "332-441-7883",
-        "photo": "/images/id-19-200-300.jpg"
+        "photo": "/images/id-19-200-300.jpg",
+        "isFavorite": false,
     },
     {
         "id": "d97eb312-c502-48aa-b8d6-a427b8950ce1",
@@ -95,7 +106,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Thu Oct 13 2022",
         "name": "Esmeralda Smitham",
         "phone": "1-935-199-5444",
-        "photo": "/images/id-159-200-300.jpg"
+        "photo": "/images/id-159-200-300.jpg",
+        "isFavorite": false,
     },
     {
         "id": "2a545508-7e95-4b8e-a827-603dbae0c81f",
@@ -103,7 +115,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Thu May 19 2022",
         "name": "Addison Rippin",
         "phone": "(242) 098-2124 x872",
-        "photo": "/images/id-43-200-300.jpg"
+        "photo": "/images/id-43-200-300.jpg",
+        "isFavorite": false,
     },
     {
         "id": "5dd152ab-d6ab-4a71-844c-17c2d7cc7543",
@@ -111,7 +124,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Wed Nov 09 2022",
         "name": "Mervin Rolfson",
         "phone": "1-006-874-7703 x47405",
-        "photo": "/images/id-174-200-300.jpg"
+        "photo": "/images/id-174-200-300.jpg",
+        "isFavorite": false,
     },
     {
         "id": "a3a09ca9-06f2-46a1-bce0-5a1aab7bf0c5",
@@ -119,7 +133,8 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Thu Oct 27 2022",
         "name": "Nicholaus Stiedemann",
         "phone": "122.830.2532 x374",
-        "photo": "/images/id-776-200-300.jpg"
+        "photo": "/images/id-776-200-300.jpg",
+        "isFavorite": false,
     },
     {
         "id": "069081b4-12b8-4bbd-84d2-1715140459c3",
@@ -127,6 +142,7 @@ export const initialContacts: ContactDto[] = [
         "birthday": "Sat Jan 21 2023",
         "name": "Kaitlyn Moore",
         "phone": "771.312.4654 x77737",
-        "photo": "/images/id-61-200-300.jpg"
+        "photo": "/images/id-61-200-300.jpg",
+        "isFavorite": true,
     }
 ];

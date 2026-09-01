@@ -1,6 +1,6 @@
-import {useAppDispatch, useAppSelector} from "src/redux";
 import {useEffect} from "react";
-import {getContactsAction} from "src/redux/actions/contactActions";
+import {getContactsAction} from "src/redux/actions";
+import {useAppDispatch, useAppSelector} from "src/redux";
 
 export const useContacts = () => {
     const dispatch = useAppDispatch();

@@ -1,18 +1,18 @@
-import React, {memo, useEffect, useState} from 'react';
-import {CommonPageProps} from './types';
-import {Col, Row} from 'react-bootstrap';
-import {useParams} from 'react-router-dom';
+import {GroupCard, ContactCard, Empty, Loader} from 'src/components';
 import {GroupDto} from 'src/types/dto/GroupDto';
-import {GroupCard} from 'src/components/GroupCard';
-import {Empty} from 'src/components/Empty';
-import {ContactCard} from 'src/components/ContactCard';
-import {useContacts} from "src/hooks";
+import {useContacts, useGroups} from "src/hooks";
+import {useParams} from 'react-router-dom';
+import {Col, Row} from 'react-bootstrap';
 
-export const GroupPage = (({contactsState, groupContactsState}: CommonPageProps) => {
-    const {groupId} = useParams<GroupDto['id']>();
-    const group: GroupDto | undefined = groupContactsState[0].find(({id}) => id === groupId);
+export const GroupPage = () => {
+    const {groups, isLoading: isGroupsLoading} = useGroups();
+    const {contacts, isLoading: isContactsLoading} = useContacts();
+    const {groupId} = useParams<{ groupId: GroupDto['id'] }>();
 
-    const {contacts} = useContacts();
+    if (isGroupsLoading || isContactsLoading)
+        return <Loader/>;
+
+    const group = groups.find(({id}) => id === groupId);
     const groupContacts = group ? contacts.filter(({id}) => group.contactIds.includes(id)) : [];
 
     return (
@@ -23,7 +23,7 @@ export const GroupPage = (({contactsState, groupContactsState}: CommonPageProps)
                         <Col xxl={12}>
                             <Row xxl={3}>
                                 <Col className="mx-auto">
-                                    <GroupCard groupContacts={group}/>
+                                    <GroupCard group={group}/>
                                 </Col>
                             </Row>
                         </Col>
@@ -42,4 +42,5 @@ export const GroupPage = (({contactsState, groupContactsState}: CommonPageProps)
             }
         </Row>
     );
-});
+};
+

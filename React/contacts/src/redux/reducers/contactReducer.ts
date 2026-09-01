@@ -1,27 +1,27 @@
-import {PROJECT_ACTIONS} from "src/redux/actions/actionTypes";
+import {ACTIONS} from "src/constants/actionTypes";
 import {ActionType} from "src/redux/types";
 
 const initialState = {
     contacts: [],
-    isLoading: true,
+    isLoading: false,
     error: null,
 };
 
 export const contactsReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
-        case PROJECT_ACTIONS.GET_CONTACTS_REQUEST:
+        case ACTIONS.GET_CONTACTS_REQUEST:
             return {
                 ...state,
                 isLoading: true,
                 error: false
             };
-        case PROJECT_ACTIONS.GET_CONTACTS_SUCCESS:
+        case ACTIONS.GET_CONTACTS_SUCCESS:
             return {
                 contacts: [...action.payload.contacts],
                 isLoading: false,
                 error: false,
             };
-        case PROJECT_ACTIONS.GET_CONTACTS_FAILURE:
+        case ACTIONS.GET_CONTACTS_FAILURE:
             return {
                 contacts: [...state.contacts],
                 isLoading: false,

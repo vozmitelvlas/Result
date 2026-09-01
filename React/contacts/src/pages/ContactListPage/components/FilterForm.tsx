@@ -10,10 +10,10 @@ export interface FilterFormValues {
 }
 
 interface FilterFormProps extends FormikConfig<Partial<FilterFormValues>> {
-    groupContactsList: GroupDto[];
+    groups: GroupDto[];
 }
 
-export const FilterForm = memo(({onSubmit, initialValues = {}, groupContactsList}: FilterFormProps) => {
+export const FilterForm = memo(({onSubmit, initialValues = {}, groups}: FilterFormProps) => {
     return (
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
             {({handleChange, handleSubmit}) => (
@@ -38,9 +38,10 @@ export const FilterForm = memo(({onSubmit, initialValues = {}, groupContactsList
                                 onChange={handleChange}
                             >
                                 <option>Open this select menu</option>
-                                {groupContactsList.map((groupContacts) => (
-                                    <option value={groupContacts.id}
-                                            key={groupContacts.id}>{groupContacts.name}</option>
+                                {groups.map((group) => (
+                                    <option value={group.id} key={group.id}>
+                                        {group.name}
+                                    </option>
                                 ))}
                             </Form.Select>
                         </Col>

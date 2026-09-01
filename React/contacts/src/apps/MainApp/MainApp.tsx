@@ -5,18 +5,18 @@ import {BrowserRouter} from 'react-router-dom';
 import {ContactDto} from 'src/types/dto/ContactDto';
 import {FavoriteContactDto} from 'src/types/dto/FavoriteContactDto';
 import {GroupDto} from 'src/types/dto/GroupDto';
-import {DATA_CONTACT, DATA_GROUP_CONTACT} from 'src/__data__';
+import {CONTACTS, GROUPS} from 'src/__data__';
 import {AppRouter} from "src/router";
 
 export const MainApp = () => {
-    const contactsState = useState<ContactDto[]>(DATA_CONTACT);
+    const contactsState = useState<ContactDto[]>(CONTACTS);
     const favoriteContactsState = useState<FavoriteContactDto>([
-        DATA_CONTACT[0].id,
-        DATA_CONTACT[1].id,
-        DATA_CONTACT[2].id,
-        DATA_CONTACT[3].id
+        CONTACTS[0].id,
+        CONTACTS[1].id,
+        CONTACTS[2].id,
+        CONTACTS[3].id
     ]);
-    const groupContactsState = useState<GroupDto[]>(DATA_GROUP_CONTACT);
+    const groupContactsState = useState<GroupDto[]>(GROUPS);
 
     return (
         <ThemeProvider breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']} minBreakpoint="xxs">

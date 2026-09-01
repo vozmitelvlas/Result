@@ -16,7 +16,7 @@ export const CodeBlock = ({children, className}: CodeBlockProps) => {
     const code = String(children).replace(/\n$/, "");
 
     return (
-        <Highlight theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight} code={code} language={language}>
+        <Highlight theme={colorScheme === 'dark' ? themes.oneDark : themes.vsLight} code={code} language={language}>
             {({
                   className,
                   style,

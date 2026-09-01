@@ -2,16 +2,18 @@ import React, {memo, useEffect, useState} from 'react';
 import {CommonPageProps} from './types';
 import {Col, Row} from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
-import {ContactDto} from 'src/types/dto/ContactDto';
 import {GroupDto} from 'src/types/dto/GroupDto';
 import {GroupCard} from 'src/components/GroupCard';
 import {Empty} from 'src/components/Empty';
 import {ContactCard} from 'src/components/ContactCard';
+import {useContacts} from "src/hooks";
 
 export const GroupPage = (({contactsState, groupContactsState}: CommonPageProps) => {
-    const {groupId} = useParams<{ groupId: string }>();
+    const {groupId} = useParams<GroupDto['id']>();
     const group: GroupDto | undefined = groupContactsState[0].find(({id}) => id === groupId);
-    const groupContacts: ContactDto[] = group ? contactsState[0].filter(({id}) => group.contactIds.includes(id)) : [];
+
+    const {contacts} = useContacts();
+    const groupContacts = group ? contacts.filter(({id}) => group.contactIds.includes(id)) : [];
 
     return (
         <Row className="g-4">

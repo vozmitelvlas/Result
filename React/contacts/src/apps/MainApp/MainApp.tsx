@@ -7,6 +7,8 @@ import {FavoriteContactDto} from 'src/types/dto/FavoriteContactDto';
 import {GroupDto} from 'src/types/dto/GroupDto';
 import {CONTACTS, GROUPS} from 'src/__data__';
 import {AppRouter} from "src/router";
+import {Provider} from "react-redux";
+import {store} from "src/redux";
 
 export const MainApp = () => {
     const contactsState = useState<ContactDto[]>(CONTACTS);
@@ -19,13 +21,15 @@ export const MainApp = () => {
     const groupContactsState = useState<GroupDto[]>(GROUPS);
 
     return (
-        <ThemeProvider breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']} minBreakpoint="xxs">
-            <BrowserRouter>
-                <AppRouter
-                    groupContactsState={groupContactsState}
-                    contactsState={contactsState}
-                    favoriteContactsState={favoriteContactsState}/>
-            </BrowserRouter>
-        </ThemeProvider>
+        <Provider store={store}>
+            <ThemeProvider breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']} minBreakpoint="xxs">
+                <BrowserRouter>
+                    <AppRouter
+                        groupContactsState={groupContactsState}
+                        contactsState={contactsState}
+                        favoriteContactsState={favoriteContactsState}/>
+                </BrowserRouter>
+            </ThemeProvider>
+        </Provider>
     );
 };

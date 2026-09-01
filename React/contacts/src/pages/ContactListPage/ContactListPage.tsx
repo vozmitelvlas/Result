@@ -1,13 +1,13 @@
-import React, {memo, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {CommonPageProps} from '../types';
 import {Col, Row} from 'react-bootstrap';
 import {ContactCard} from 'src/components/ContactCard';
 import {FilterForm, FilterFormValues} from 'src/pages/ContactListPage/components/FilterForm';
 import {ContactDto} from 'src/types/dto/ContactDto';
-
+import {useContacts} from "src/hooks";
 
 export const ContactListPage = memo<CommonPageProps>(({contactsState, groupContactsState}) => {
-    const [contacts, setContacts] = useState<ContactDto[]>(contactsState[0]);
+    const {contacts, isLoading} = useContacts();
 
     const onSubmit = (fv: Partial<FilterFormValues>) => {
         let findContacts: ContactDto[] = contactsState[0];
@@ -29,8 +29,13 @@ export const ContactListPage = memo<CommonPageProps>(({contactsState, groupConta
             }
         }
 
-        setContacts(findContacts);
+        // setContacts(findContacts);
     };
+
+    if (isLoading)
+        return <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </div>;
 
     return (
         <Row xxl={1}>

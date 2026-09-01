@@ -23,13 +23,7 @@ export const AppRouter = ({contactsState, favoriteContactsState, groupContactsSt
                             groupContactsState={groupContactsState}
                         />
                     }/>
-                    <Route path=":contactId" element={
-                        <ContactPage
-                            contactsState={contactsState}
-                            favoriteContactsState={favoriteContactsState}
-                            groupContactsState={groupContactsState}
-                        />
-                    }/>
+                    <Route path=":contactId" element={<ContactPage/>}/>
                 </Route>
                 <Route path="groups">
                     <Route index element={

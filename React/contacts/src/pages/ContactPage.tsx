@@ -1,12 +1,14 @@
 import {ContactCard} from 'src/components/ContactCard';
+import {ContactDto} from "src/types/dto/ContactDto";
 import {Empty} from 'src/components/Empty';
 import {useParams} from 'react-router-dom';
 import {Col, Row} from 'react-bootstrap';
-import {CommonPageProps} from './types';
+import {useContacts} from "src/hooks";
 
-export const ContactPage = ({contactsState}: CommonPageProps) => {
-    const {contactId} = useParams<{ contactId: string }>();
-    const contact = contactsState[0].find(({id}) => id === contactId);
+export const ContactPage = () => {
+    const {contactId} = useParams<{ contactId: ContactDto['id'] }>();
+    const {contacts} = useContacts();
+    const contact = contacts.find(({id}) => id === contactId);
 
     return (
         <Row xxl={3}>

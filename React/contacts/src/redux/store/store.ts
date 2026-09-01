@@ -1,10 +1,15 @@
+import {createStore, combineReducers, applyMiddleware} from "redux";
 import {contactsReducer, groupReducer} from "../reducers";
-import {createStore, combineReducers} from "redux";
+import {thunk} from 'redux-thunk';
 
-
-const reducers = combineReducers({
+const rootReducer = combineReducers({
     contacts: contactsReducer,
     groups: groupReducer,
 });
 
-export const store = createStore(reducers);
+export const store = createStore(
+    rootReducer,
+    undefined,
+    applyMiddleware(thunk)
+);
+export type RootState = ReturnType<typeof rootReducer>

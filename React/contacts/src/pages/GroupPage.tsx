@@ -1,8 +1,8 @@
 import {GroupCard, ContactCard, Empty, Loader} from 'src/components';
-import {GroupDto} from 'src/types/dto/GroupDto';
 import {useContacts, useGroups} from "src/hooks";
 import {useParams} from 'react-router-dom';
 import {Col, Row} from 'react-bootstrap';
+import {GroupDto} from 'src/types';
 
 export const GroupPage = () => {
     const {groups, isLoading: isGroupsLoading} = useGroups();

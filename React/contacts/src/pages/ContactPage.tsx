@@ -1,8 +1,8 @@
 import {Loader, Empty, ContactCard} from 'src/components';
-import {ContactDto} from "src/types/dto/ContactDto";
 import {useParams} from 'react-router-dom';
 import {Col, Row} from 'react-bootstrap';
 import {useContacts} from "src/hooks";
+import {ContactDto} from "src/types";
 
 export const ContactPage = () => {
     const {contacts, isLoading} = useContacts();

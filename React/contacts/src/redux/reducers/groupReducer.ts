@@ -1,6 +1,5 @@
-import {GROUPS} from "src/__data__";
 import {ActionType} from "src/redux/types";
-import {ACTIONS} from "src/constants/actionTypes";
+import {ACTIONS} from "src/constants";
 
 const initialState = {
     groups: [],

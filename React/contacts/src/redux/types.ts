@@ -1,6 +1,5 @@
-import {ACTIONS} from "src/constants/actionTypes";
-import {ContactDto} from "src/types/dto/ContactDto";
-import {GroupDto} from "src/types/dto/GroupDto";
+import {ContactDto, GroupDto} from "src/types";
+import {ACTIONS} from "src/constants";
 
 interface GET_CONTACTS_SUCCESS {
     type: typeof ACTIONS.GET_CONTACTS_SUCCESS,
@@ -38,6 +37,13 @@ interface GET_GROUPS_FAILURE {
     };
 }
 
+interface FILTER_CONTACTS {
+    type: typeof ACTIONS.FILTER_CONTACTS,
+    payload: {
+        contacts: ContactDto[]
+    }
+}
+
 
 export type ActionType =
     | GET_CONTACTS_REQUEST
@@ -46,3 +52,4 @@ export type ActionType =
     | GET_GROUPS_SUCCESS
     | GET_GROUPS_REQUEST
     | GET_GROUPS_FAILURE
+    | FILTER_CONTACTS

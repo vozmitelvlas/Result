@@ -1,34 +1,27 @@
-import {FilterForm, FilterFormValues} from './components/FilterForm';
+import {FilterForm} from "src/pages/ContactListPage/components/FilterForm";
 import {Loader, ContactCard} from 'src/components';
 import {useContacts, useGroups} from "src/hooks";
 import {Col, Row} from 'react-bootstrap';
+import {useState} from "react";
+
+const initialState = {
+    name: "",
+    groupId: "",
+};
 
 export const ContactListPage = () => {
-    const {contacts, isLoading} = useContacts();
+    const {contacts: allContacts, isLoading} = useContacts();
     const {groups} = useGroups();
+    const [formValues, setFormValues] = useState(initialState);
 
-    const onSubmit = (fv: Partial<FilterFormValues>) => {
-        // let findContacts: ContactDto[] = contactsState[0];
-        //
-        // if (fv.name) {
-        //     const fvName = fv.name.toLowerCase();
-        //     findContacts = findContacts.filter(({name}) => (
-        //         name.toLowerCase().indexOf(fvName) > -1
-        //     ));
-        // }
-        //
-        // if (fv.groupId) {
-        //     const groupContacts = groupContactsState[0].find(({id}) => id === fv.groupId);
-        //
-        //     if (groupContacts) {
-        //         findContacts = findContacts.filter(({id}) => (
-        //             groupContacts.contactIds.includes(id)
-        //         ));
-        //     }
-        // }
-
-        // setContacts(findContacts);
-    };
+    const contacts = allContacts.filter(contact => {
+        const nameMatch = contact.name.toLowerCase().includes(formValues.name.toLowerCase());
+        const groupMatch = formValues.groupId ? groups
+                .find(group => group.id === formValues.groupId)
+                ?.contactIds.includes(contact.id)
+            : true;
+        return nameMatch && groupMatch;
+    });
 
     if (isLoading)
         return <Loader/>;
@@ -36,7 +29,7 @@ export const ContactListPage = () => {
     return (
         <Row xxl={1}>
             <Col className="mb-3">
-                <FilterForm groups={groups} initialValues={{}} onSubmit={onSubmit}/>
+                <FilterForm setFormValues={setFormValues} formValues={formValues}/>
             </Col>
             <Col>
                 <Row xxl={4} className="g-4">

@@ -1,8 +1,8 @@
-import {ActionType} from "src/redux/types";
-import {Dispatch} from "redux";
-import {ACTIONS} from "src/constants/actionTypes";
 import {initialGroups} from "src/initialGroups";
+import {ActionType} from "src/redux/types";
+import {ACTIONS} from "src/constants";
 import {delay} from "src/utills";
+import {Dispatch} from "redux";
 
 export const getGroupsAction = () =>
     async (dispatch: Dispatch<ActionType>) => {

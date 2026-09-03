@@ -1,8 +1,8 @@
+import {Breadcrumbs} from 'src/components/Breadcrumbs';
 import {Outlet, useLocation} from 'react-router-dom';
 import {Col, Container, Row} from 'react-bootstrap';
+import {MainMenu} from '../components';
 import React from 'react';
-import {MainMenu} from '../components/MainMenu';
-import {Breadcrumbs} from 'src/components/Breadcrumbs';
 
 export const MainLayout = () => {
     const location = useLocation();

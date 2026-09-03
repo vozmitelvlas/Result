@@ -1,4 +1,4 @@
-import {ContactCard} from 'src/components/ContactCard';
+import {ContactCard} from 'src/components';
 import {Col, Row} from 'react-bootstrap';
 import {useContacts} from "src/hooks";
 

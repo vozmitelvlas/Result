@@ -2,12 +2,12 @@ import {Card} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {GroupDto} from 'src/types/dto/GroupDto';
 
-interface GroupContactsCardProps {
+interface GroupCardProps {
     group: GroupDto,
     withLink?: boolean
 }
 
-export const GroupCard = ({group, withLink}: GroupContactsCardProps) =>
+export const GroupCard = ({group, withLink}: GroupCardProps) =>
     <Card key={group.id}>
         <Card.Header>
             {withLink

@@ -1,8 +1,8 @@
-import {ACTIONS} from "src/constants/actionTypes";
 import {initialContacts} from "src/initialContacts";
 import {ActionType} from "src/redux/types";
-import {Dispatch} from "redux";
+import {ACTIONS} from "src/constants";
 import {delay} from "src/utills";
+import {Dispatch} from "redux";
 
 export const getContactsAction = () =>
     async (dispatch: Dispatch<ActionType>) => {

@@ -1,10 +1,11 @@
-import {ACTIONS} from "src/constants/actionTypes";
 import {ActionType} from "src/redux/types";
+import {ACTIONS} from "src/constants";
 
 const initialState = {
     contacts: [],
     isLoading: false,
     error: null,
+    filteredContacts: []
 };
 
 export const contactsReducer = (state = initialState, action: ActionType) => {
@@ -26,6 +27,12 @@ export const contactsReducer = (state = initialState, action: ActionType) => {
                 contacts: [...state.contacts],
                 isLoading: false,
                 error: action.payload.error,
+            };
+
+        case ACTIONS.FILTER_CONTACTS:
+            return {
+                ...state,
+                filteredContacts: action.payload.contacts
             };
 
         default:

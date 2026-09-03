@@ -23,14 +23,13 @@ export const NoteHeader = ({isEditing, note}: NoteHeaderProps) => {
 
     const handleToEditNote = () => navigate(`/notes/${note.id}/edit`);
 
-    const handleDeleteNote = () => deleteNote(note.id).then(() => navigate('/notes'));
+    const handleDeleteNote = async () => {
+        await deleteNote(note.id);
+        openMenu();
+        navigate('/notes');
+    };
 
-    const handleDeleteClick = () => confirm({
-        title: 'Удалить заметку?', onConfirm: () => {
-            handleDeleteNote();
-            openMenu();
-        }
-    });
+    const handleDeleteClick = () => confirm({title: 'Удалить заметку?', onConfirm: handleDeleteNote});
 
     return isEditing ? (
         <Group justify="space-between" wrap="nowrap">

@@ -4,7 +4,7 @@ import {useForm} from '@mantine/form';
 import {useAuth} from "@/hooks";
 
 interface LoginFormValues {
-    username: string,
+    email: string,
     password: string
 }
 
@@ -13,12 +13,12 @@ export const LoginPage = () => {
     const {login} = useAuth();
     const {onSubmit, getInputProps, setFieldError} = useForm<LoginFormValues>({
         mode: "controlled",
-        initialValues: {username: '', password: ''}
+        initialValues: {email: '', password: ''}
     });
 
-    const handleSubmit = async ({username, password}: LoginFormValues) => {
+    const handleSubmit = async ({email, password}: LoginFormValues) => {
         try {
-            await login(username, password);
+            await login(email, password);
             navigate('/notes', {replace: true});
         } catch {
             setFieldError('password', 'Неверное имя пользователя или пароль');
@@ -33,9 +33,11 @@ export const LoginPage = () => {
                     <Stack>
                         <TextInput
                             required
-                            label="Имя"
+                            label="Почта"
                             variant="filled"
-                            {...getInputProps('username')}
+                            {...getInputProps('email')}
+                            type="email"
+                            autoComplete="email"
                         />
                         <PasswordInput
                             required

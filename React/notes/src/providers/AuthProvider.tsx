@@ -1,35 +1,44 @@
-import {type PropsWithChildren, useCallback, useState} from "react";
-import {AUTH_STORAGE_KEY} from "@/config";
+import {onAuthStateChanged, signInWithEmailAndPassword, signOut, type User} from "firebase/auth";
+import {type PropsWithChildren, useCallback, useEffect, useState} from "react";
 import {AuthContext} from "@/context";
-import type {User} from "@/types";
-import {users} from "@/constants";
+import {syncNotes} from "@/services";
+import {auth} from "@/lib";
+
 
 export const AuthProvider = ({children}: PropsWithChildren) => {
-    const [user, setUser] = useState<User | null>(() => {
-        const user = localStorage.getItem(AUTH_STORAGE_KEY);
-        return user ? JSON.parse(user) : null;
-    });
+    const [user, setUser] = useState<User | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const login = useCallback(async (username: string, password: string) => {
-        const user = users.find(user => user.username === username && user.password === password);
-        if (!user)
-            throw Error('Invalid credentials');
-
-        localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(user));
-        setUser(user);
+    useEffect(() => {
+        return onAuthStateChanged(auth, async (firebaseUser) => {
+            setUser(firebaseUser);
+            if (firebaseUser)
+                await syncNotes(firebaseUser.uid);
+            setIsLoading(false);
+        });
     }, []);
 
-    const logout = useCallback(async () => {
-        localStorage.removeItem(AUTH_STORAGE_KEY);
-        setUser(null);
+    const login = useCallback(async (email: string, password: string) => {
+        try {
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+        } catch (error) {
+            throw new Error("Не удалось выполнить вход", {cause: error});
+        }
     }, []);
+
+    const logout = useCallback(async () => await signOut(auth), []);
 
     return (
         <AuthContext value={{
             user,
             login,
             logout,
-            isAuthenticated: !!user
+            isAuthenticated: !!user,
+            isLoading,
         }}>
             {children}
         </AuthContext>

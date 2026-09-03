@@ -16,6 +16,7 @@
     "dexie": "^4.4.5",
     "dexie-react-hooks": "^4.4.0",
     "easymde": "^2.21.0",
+    "firebase": "^12.18.0",
     "font-awesome": "^4.7.0",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.2.8",

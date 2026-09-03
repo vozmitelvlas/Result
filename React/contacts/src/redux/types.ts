@@ -37,14 +37,6 @@ interface GET_GROUPS_FAILURE {
     };
 }
 
-interface FILTER_CONTACTS {
-    type: typeof ACTIONS.FILTER_CONTACTS,
-    payload: {
-        contacts: ContactDto[]
-    }
-}
-
-
 export type ActionType =
     | GET_CONTACTS_REQUEST
     | GET_CONTACTS_SUCCESS
@@ -52,4 +44,3 @@ export type ActionType =
     | GET_GROUPS_SUCCESS
     | GET_GROUPS_REQUEST
     | GET_GROUPS_FAILURE
-    | FILTER_CONTACTS

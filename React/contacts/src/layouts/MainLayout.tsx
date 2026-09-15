@@ -1,0 +1,30 @@
+import {Breadcrumbs} from 'src/components/Breadcrumbs';
+import {Outlet, useLocation} from 'react-router-dom';
+import {Col, Container, Row} from 'react-bootstrap';
+import {MainMenu} from '../components';
+import React from 'react';
+
+export const MainLayout = () => {
+    const location = useLocation();
+    const pathNames = location.pathname.split('/').filter((x) => x);
+
+    return (
+        <Container>
+            <Row>
+                <Col xxl={12}>
+                    <MainMenu/>
+                </Col>
+                <Col xxl={12}>
+                    <Breadcrumbs pathNames={pathNames}/>
+                </Col>
+                <Col xxl={12}>
+                    <Outlet/>
+                </Col>
+                <Col xxl={12}>
+                    <footer>
+                    </footer>
+                </Col>
+            </Row>
+        </Container>
+    );
+};
